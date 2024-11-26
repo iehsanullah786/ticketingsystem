@@ -3,7 +3,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card mb-6">
     <h5 class="card-header">Site Admin Creation Form</h5>
-    <form method="POST" action="{{ route('employees.store') }}" class="card-body">
+    <form method="POST" action="{{ route('AdjustmentTypes.store') }}" class="card-body">
       @csrf
 
         <!-- Name -->
@@ -15,14 +15,10 @@
         @enderror
       </div>
 
-
-
-
-
       <!-- Submit and Cancel -->
       <div class="pt-4">
         <button type="submit" class="btn btn-primary me-4">Submit</button>
-        <a href="{{ route('employees.index') }}" class="btn btn-secondary">Cancel</a>
+        <a href="{{ route('AdjustmentTypes.index') }}" class="btn btn-secondary">Cancel</a>
       </div>
     </form>
     </div>

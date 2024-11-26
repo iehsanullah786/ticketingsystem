@@ -9,4 +9,5 @@ class AdjustmentType extends Model
 {
     /** @use HasFactory<\Database\Factories\AdjustmentTypeFactory> */
     use HasFactory;
+    protected $fillable = ['name']; // Fillable attributes
 }

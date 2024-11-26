@@ -5,10 +5,7 @@
 
             </a>
 
-            <!-- <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-              <i class="ti menu-toggle-icon d-none d-xl-block align-middle"></i>
-              <i class="ti ti-x d-block d-xl-none ti-md align-middle"></i>
-            </a> -->
+
           </div>
 
           <div class="menu-inner-shadow"></div>
@@ -26,6 +23,13 @@
               <a href="{{route(name: "employees.index")}}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-users"></i>
                 <div data-i18n="Employees">Employees</div>
+              </a>
+            </li>
+
+            <li class="menu-item {{ request()->is('AdjustmentTypes*') ? ' active' : '' }}">
+              <a href="{{route(name: "AdjustmentTypes.index")}}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Adjustment Types">Admin Types</div>
               </a>
             </li>
 
