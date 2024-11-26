@@ -1,15 +1,14 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\TenantController;
+use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
     Route::get('/', function () {
         return view('welcome');
     });
 
-Route::get('/AdminDashboard', function () {
-return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/AdminDashboard', [AdminDashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
+
 
 Route::middleware('auth')->group(function () {
 

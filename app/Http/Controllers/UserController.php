@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Employee;
 
 class UserController extends Controller
@@ -67,7 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-      $employee=Employee::find($id);
+      $user=Employee::find($id);
       $user->name=$request->name;
       $user->email=$request->email;
       $user->password=Hash::make($request->password);
