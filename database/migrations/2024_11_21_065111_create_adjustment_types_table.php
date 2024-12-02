@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('adjustment_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('mode')->nullable();
             $table->timestamps();
         });
     }

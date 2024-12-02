@@ -3,7 +3,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateEmployeeRequest extends FormRequest
+class UpdateAdjustmentTypesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,7 @@ class UpdateEmployeeRequest extends FormRequest
     {
         return [
             'name' => 'string|max:255',
-            'email' => 'email',
-            'phone' => 'numeric|digits_between:10,15',
-            'address' => 'string|max:500',
-            'bank' => 'string|max:255',
-            'accountno' => 'nullable',
-            'salary' => 'nullable',
+            'mode' => 'string|max:500',
         ];
     }
 }

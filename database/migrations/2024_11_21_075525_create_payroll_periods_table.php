@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('payroll_periods', function (Blueprint $table) {
             $table->id(); // INT as Primary Key
-            $table->unsignedTinyInteger('month')->nullable(); // TINYINT for months (1-12)
-            $table->unsignedSmallInteger('year')->nullable(); // SMALLINT for years (e.g., 2024)
+            $table->string('month');
+            $table->string('year');
             $table->timestamps();
         });
     }

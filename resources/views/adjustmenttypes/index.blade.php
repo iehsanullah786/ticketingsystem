@@ -5,7 +5,7 @@
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">All adjustmenttypes </h5>
-      <a href="{{ route('AdjustmentTypes.create') }}" class="btn btn-primary">
+      <a href="{{ route('adjustment-types.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i>
       </a>
     </div>
@@ -14,6 +14,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Mode</th>
             <th>Edit</th>
           </tr>
         </thead>
@@ -21,15 +22,18 @@
           @forelse ($adjustmenttypes as $adjustmenttype)
             <tr>
               <td>
-                <span class="fw-medium">{{ $adjustmenttype->name.' '.$adjustmenttype->last_name }}</span>
+                <span class="fw-medium">{{ $adjustmenttype->name}}</span>
+              </td>
+              <td>
+                <span class="fw-medium">{{ $adjustmenttype->mode}}</span>
               </td>
 
               <td>
-              <a href="{{route('AdjustmentTypes.edit', $adjustmenttype->id)}}">
+              <a href="{{route('adjustment-types.edit', $adjustmenttype->id)}}">
                 <button class="btn btn-warning"><i class="ti ti-edit me-2"></i></button>
               </a>
 
-              <form method="POST" action="{{ route('AdjustmentTypes.destroy', $adjustmenttype->id) }}"  onsubmit="return confirm('Are you sure you want to delete this adjustmenttype?');" style="display:inline;">
+              <form method="POST" action="{{ route('adjustment-types.destroy', $adjustmenttype->id) }}"  onsubmit="return confirm('Are you sure you want to delete this adjustmenttype?');" style="display:inline;">
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>

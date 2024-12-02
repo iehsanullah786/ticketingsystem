@@ -21,9 +21,6 @@ return new class extends Migration
             $table->text(column: 'address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string(column: 'password');
-            $table->string(column: 'tenant_id')->nullable()->foreign('tenant_id')
-            ->references('id')
-            ->on('tenants');
             $table->string(column: 'status')->default(UserStatus::ACTIVE);
             $table->rememberToken();
             $table->timestamps();

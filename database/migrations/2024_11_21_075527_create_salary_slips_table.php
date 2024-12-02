@@ -13,10 +13,17 @@ return new class extends Migration
     {
         Schema::create('salary_slips', function (Blueprint $table) {
             $table->id(); // Primary key
-            $table->foreignId('employee_id')->constrained()->onDelete('cascade')->nullable(); // FK to employees
-            $table->foreignId('payroll_period_id')->constrained()->onDelete('cascade')->nullable(); // FK to payroll periods
+            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+
+            $table->unsignedBigInteger('payroll_period_id')->nullable();
+            $table->foreign('payroll_period_id')->references('id')->on('payroll_periods')->onDelete('cascade');
+
+            $table->unsignedBigInteger('adjustment_type_id')->nullable();
+            $table->foreign('adjustment_type_id')->references('id')->on('adjustment_types')->onDelete('cascade');
+
             $table->decimal('base_salary', 10, 2)->nullable(); // Base salary
-            $table->decimal('total_adjustments', 10, 2)->nullable(); // Total adjustments
+            $table->decimal('adjustment_amount', 10, 2)->nullable(); // Total adjustments
             $table->decimal('net_salary', 10, 2)->nullable(); // Net salary (calculated)
             $table->timestamps(); // Created at, Updated at
         });

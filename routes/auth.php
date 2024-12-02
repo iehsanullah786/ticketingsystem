@@ -39,11 +39,9 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-   
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->middleware(['auth', 'verified'])->name('dashboard');
-    Route::get('AdminDashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+
+
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
