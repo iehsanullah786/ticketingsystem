@@ -9,4 +9,8 @@ class SalarySlip extends Model
 {
     /** @use HasFactory<\Database\Factories\SalarySlipFactory> */
     use HasFactory;
+    protected $fillable = ['employee_id', 'payroll_period_id', 'adjustment_type_id', 'base_salary', 'adjustment_amount', 'net_salary'];
 }
+
+
+

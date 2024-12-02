@@ -33,6 +33,13 @@
               </a>
             </li>
 
+            <li class="menu-item {{ request()->is('payroll-periods') ? ' active' : '' }}">
+              <a href="{{route(name: "payroll-periods.index")}}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Payroll Periods">Payroll Periods</div>
+              </a>
+            </li>
+
 
 
           </ul>

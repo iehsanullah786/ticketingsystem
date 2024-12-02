@@ -1,64 +1,58 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreSalarySlipRequest;
+use App\Http\Requests\UpdateSalarySlipRequest;
+use App\Models\AdjustmentType;
 class SalarySlipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $adjustmenttypes=AdjustmentType::all();
+        return view('adjustmenttypes.index', compact( 'adjustmenttypes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('adjustmenttypes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(StoreSalarySlipRequest $request)
     {
-        //
+        AdjustmentType::create($request->validated());
+        return redirect()->route('adjustment-types.index')->with('success', value: 'Adjustment Type created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
+        $adjustmenttype=AdjustmentType::find($id);
+        return view('adjustmenttypes.edit', compact('adjustmenttype'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function update(UpdateSalarySlipRequest $request, string $id)
     {
-        //
+      $adjustmenttype=AdjustmentType::find($id);
+      $adjustmenttype->update($request->validated());
+
+      return redirect()->route('adjustment-types.index')->with('success', 'Employee Updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        AdjustmentType::destroy($id);
+        return redirect()->route('adjustment-types.index');
     }
 }

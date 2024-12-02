@@ -1,64 +1,58 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StorePayrollPeriodRequest;
+use App\Http\Requests\UpdatePayrollPeriodRequest;
+use App\Models\PayrollPeriod;
 class PayrollPeriodController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $payrollperiods=PayrollPeriod::all();
+        return view('payrollperiods.index', compact( 'payrollperiods'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('payrollperiods.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(StorePayrollPeriodRequest $request)
     {
-        //
+        PayrollPeriod::create($request->validated());
+        return redirect()->route('payroll-periods.index')->with('success', value: 'Adjustment Type created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
+        $payrollperiod=PayrollPeriod::find($id);
+        return view('payrollperiods.edit', compact('payrollperiod'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function update(UpdatePayrollPeriodRequest $request, string $id)
     {
-        //
+      $payrollperiod=PayrollPeriod::find($id);
+      $payrollperiod->update($request->validated());
+
+      return redirect()->route('payroll-periods.index')->with('success', 'Employee Updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        PayrollPeriod::destroy($id);
+        return redirect()->route('payroll-periods.index');
     }
 }

@@ -9,4 +9,5 @@ class PayrollPeriod extends Model
 {
     /** @use HasFactory<\Database\Factories\PayrollPeriodFactory> */
     use HasFactory;
+    protected $fillable = ['month', 'year']; // Fillable attributes
 }
