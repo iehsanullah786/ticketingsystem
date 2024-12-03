@@ -1,22 +1,29 @@
 <?php
-
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Role;
-use App\Models\Employee;
+use App\RolesEnum;
+use App\UserStatus;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\RedirectResponse;
+use Hash;
 
 class UserController extends Controller
 {
-
-
+  /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
         $users=User::all();
-        $roles=Role::all();
-        return view('app.users.index', compact('users', 'roles'));
+       return view('users.index', compact('users'));
     }
 
     /**
@@ -24,65 +31,133 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('app.users.create');
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
+        return view(view: 'users.create');
+
     }
 
-    public function store(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreUserRequest $request)
     {
-        // Validate request
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8',
-        ]);
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
+        // Create Site Manager User
 
-        // Create user
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-        ]);
+        User::create($request->validated());
 
-        // Redirect with success message
-        return redirect()->route('users.index')->with('success', 'User created successfully!');
+        // Assign Role
+        // $user->assignRole(RolesEnum::SITEUSER);
+        return redirect()->route('admins.index')->with('success', value: 'User created successfully.');
     }
-
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
+
     }
 
-
-    public function edit(string $id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit( $id)
     {
         $user=User::find($id);
-        return view('app.dashboard.users.edit', compact('user'));
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
+              // Fetch all tenants from the database
+        return view('users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserRequest $request, string $id)
     {
-      $user=Employee::find($id);
-      $user->name=$request->name;
-      $user->email=$request->email;
-      $user->password=Hash::make($request->password);
-      $user->save();
 
-      return redirect()->route('users.index')->with('success', 'User Updated successfully!');
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
+    // Update user details
+    $salaryslips = User::find($id);
+    $salaryslips->update($request->validated());
+
+    // Redirect with a success message
+    return redirect()->route('admins.index')->with('success', 'User updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id )
     {
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
         User::destroy($id);
-        return redirect()->route('users.index');
+
+
+        // Redirect back with success message
+        return redirect()->route('admins.index')->with('message', 'User deleted successfully');
     }
+    public function toggleStatus(Request $request)
+    {
+        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
+        //     abort(code: 403);
+        // }
+        $user = User::findOrFail($request->user_id);
+        // Toggle status
+        if ($user->status === UserStatus::ACTIVE) {
+            $user->status = UserStatus::DEACTIVE;
+        } else {
+            $user->status = UserStatus::ACTIVE;
+        }
+        // Save the user
+        $user->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Status changed successfully!'
+        ]);
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    // public function profileEdit(Request $request)
+    // {
+    //     return view('profile.edit', [
+    //         'user' => $request->user(),
+    //     ]);
+    // }
+      /**
+     * Update the user's profile information.
+     */
+    // public function profileUpdate(ProfileUpdateRequest $request): RedirectResponse
+    // {
+    //     $user = $request->user();
+
+    //     // Update user's profile information
+    //     $user->fill($request->except(['password']));
+    //     if ($request->user()->isDirty('email')) {
+    //         $user->email_verified_at = null;
+    //     }
+
+    //     // Check if a new password has been set
+    //     if ($request->filled('password')) {
+    //         $user->password = Hash::make($request->password);
+    //     }
+
+    //     $user->save();
+    //     return Redirect::route('user.profile.edit')->with('success', value: 'Profile updated successfully.');
+
+    // }
 }

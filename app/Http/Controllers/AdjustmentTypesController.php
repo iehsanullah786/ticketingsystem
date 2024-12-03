@@ -9,13 +9,16 @@ use App\Models\AdjustmentType;
 class AdjustmentTypesController extends Controller
 {
 
+
     public function index()
     {
         $adjustmenttypes=AdjustmentType::all();
         return view('adjustmenttypes.index', compact( 'adjustmenttypes'));
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('adjustmenttypes.create');

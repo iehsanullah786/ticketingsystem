@@ -11,8 +11,15 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
-            <!-- Dashboards -->
-            <li class="menu-item {{ request()->is('dashboard*') ? ' active' : '' }}">
+
+            <li class="menu-item {{ request()->is('admins.index*') ? ' active' : '' }}">
+            <a href="{{route(name: "admins.index")}}" class="menu-link">
+            <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Admins">Admins</div>
+              </a>
+              </li>
+
+              <li class="menu-item {{ request()->is('dashboard*') ? ' active' : '' }}">
             <a href="{{route(name: "dashboard")}}" class="menu-link">
             <i class="menu-icon tf-icons ti ti-smart-home"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
@@ -37,6 +44,13 @@
               <a href="{{route(name: "payroll-periods.index")}}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-users"></i>
                 <div data-i18n="Payroll Periods">Payroll Periods</div>
+              </a>
+            </li>
+
+            <li class="menu-item {{ request()->is('salary-slips') ? ' active' : '' }}">
+              <a href="{{route(name: "salary-slips.index")}}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Salary Slips">Salary Slips</div>
               </a>
             </li>
 
