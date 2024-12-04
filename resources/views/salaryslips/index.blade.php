@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+use App\Models\AdjustmentType;
+@endphp
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -19,23 +22,30 @@
             <th>Adjustment Type</th>
             <th>Adjustment Amount</th>
             <th>Net Amount</th>
-            <th>Edit</th>
+            <th>Action</th>
+
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
           @forelse ($salaryslips as $salaryslip)
             <tr>
               <td>
-                <span class="fw-medium"></span>
+                <span class="fw-medium">{{$salaryslip->employee->name}}</span>
               </td>
               <td>
-                <span class="fw-medium"></span>
+                <span class="fw-medium">{{$salaryslip->payrollPeriod->month ." , ". $salaryslip->payrollPeriod->year}}</span>
               </td>
               <td>
                 <span class="fw-medium">{{ $salaryslip->base_salary}}</span>
               </td>
+              @php
+
+                $temp=AdjustmentType::find($salaryslip->adjustment_type_id);
+                @endphp
               <td>
-                <span class="fw-medium"> </span>
+                <span class="fw-medium">{{
+
+                $temp->name}} </span>
               </td>
               <td>
                 <span class="fw-medium">{{ $salaryslip->adjustment_amount}}</span>
@@ -45,15 +55,18 @@
               </td>
 
               <td>
-              <a href="{{route('adjustment-types.edit', $salaryslip->id)}}">
-                <button class="btn btn-warning"><i class="ti ti-edit me-2"></i></button>
-              </a>
+
 
               <form method="POST" action="{{ route('salary-slips.destroy', $salaryslip->id) }}"  onsubmit="return confirm('Are you sure you want to delete this adjustmenttype?');" style="display:inline;">
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
                 </form>
+                <a href="{{ route('generate-pdf', ['salary_slip_id' => $salaryslip->id]) }}" class="text-white">
+                <button class="btn btn-success" type="submit">Generate pdf</button>
+                </a>
+
+
 
               </td>
 

@@ -19,12 +19,10 @@ class SalarySlip extends Model
         return $this->belongsTo(Employee::class,'employee_id');
     }
 
-
     public function payrollPeriod()
     {
         return $this->belongsTo(PayrollPeriod::class,'payroll_period_id');
     }
-
 
     public function adjustmentTypes()
     {

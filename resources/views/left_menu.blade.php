@@ -36,7 +36,7 @@
             <li class="menu-item {{ request()->is('adjustment-types*') ? ' active' : '' }}">
               <a href="{{route(name: "adjustment-types.index")}}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-users"></i>
-                <div data-i18n="Adjustment Types">Admin Types</div>
+                <div data-i18n="Adjustment Types">Adjustment Types</div>
               </a>
             </li>
 

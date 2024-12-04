@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\SalarySlipController;
 use App\Http\Controllers\AdjustmentTypesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PayrollPeriodController;
 use Illuminate\Support\Facades\Route;
     Route::get('/', function () {
@@ -18,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('adjustment-types' , AdjustmentTypesController::class);
     Route::resource('payroll-periods' , PayrollPeriodController::class);
     Route::resource('salary-slips' , SalarySlipController::class);
+
     Route::resource('admins' , UserController::class);
 
 
@@ -25,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('admin/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/users/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
-
+    Route::get('/generate-pdf/{salary_slip_id}', [PdfController::class, 'generatePdf'])->name('generate-pdf');
 
 });
 
