@@ -134,9 +134,11 @@ class SalarySlipController extends Controller
 
 
 
-    public function show(string $id)
+    public function show(string $employee_id)
     {
-        $salaryslips = SalarySlip::find($id);
+        $employee=Employee::find($employee_id);
+        $salaryslips=$employee->salarySlips;
+
         return view('salaryslips.show', compact('salaryslips'));
     }
 
@@ -157,6 +159,15 @@ class SalarySlipController extends Controller
     public function destroy(string $id)
     {
         SalarySlip::destroy($id);
+        return redirect()->route('salary-slips.index')->with('success', 'Salary Slip deleted successfully.');
+    }
+
+    public function SalaryBasisPayrollPeriod(string $payroll_period_id)
+    {
+        dd($payroll_period_id);
+        $payroll_period=PayrollPeriod::find($payroll_period_id);
+        $salaryslips=$payroll_period->salarySlips;
+
         return redirect()->route('salary-slips.index')->with('success', 'Salary Slip deleted successfully.');
     }
 }

@@ -79,20 +79,12 @@
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
                 </form>
 
+                <a href="{{route('salary-slips.show', $employee->id)}}">
+                <button class="btn btn-warning">View Slips</button>
+                </a>
+
               </td>
-              <td>
-              {{--<span class="text-danger">Suspended</span>
-                <div class="form-check form-switch mb-2">
-                  <input data-status="{{$employee->user->status}}"
-                        data-id="{{ $employee->user->id }}"
-                        class="form-check-input status-toggle"
-                        {{ $employee->user->status->value == \App\UserStatus::ACTIVE->value ? 'checked' : '' }}
-                        type="checkbox" id="flexSwitchCheckDefault">
-                  <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                </div>
-                <span class="text-success">Active</span>
-                </div>
-              </td> --}}
+
             </tr>
           @empty
             <tr>

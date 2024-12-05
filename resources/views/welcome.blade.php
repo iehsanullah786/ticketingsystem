@@ -91,11 +91,17 @@
     </div>
 
     <div class="login-container">
-        <div class="login-section">
-            <h2>Super Admin Login</h2>
-            <p>Access the management dashboard to oversee all your business operations.</p>
+    <div class="login-section">
+        <h2>Super Admin Login</h2>
+        <p>Access the management dashboard to oversee all your business operations.</p>
+        @if(Auth::check())
+            <a href="{{ route('admin.dashboard') }}"><button class="login-btn">Dashboard</button></a>
+        @else
             <a href="{{ route('admin.login') }}"><button class="login-btn">Login</button></a>
-        </div>
+        @endif
+    </div>
+</div>
+
 
 
 

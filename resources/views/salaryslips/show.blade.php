@@ -7,7 +7,7 @@ use App\Models\AdjustmentType;
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">All Salary Slips </h5>
+      <h5 class="mb-0">Salary Slips</h5>
       <a href="{{ route('salary-slips.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i>
       </a>

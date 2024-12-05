@@ -849,7 +849,7 @@ button.list-group-item-primary.active {
   color: #fff;
 }
 .menu.bg-primary.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle) {
-  background: linear-gradient(270deg, rgba(119, 107, 240, 0.7) 0%, #776bf0 100%);
+  background: linear-gradient(270deg, rgba(119, 107, 240, 0.7) 0%, #CAA767 100%);
   box-shadow: 0px 2px 6px 0px rgba(119, 107, 240, 0.3);
   color: #fff !important;
 }
@@ -857,10 +857,10 @@ button.list-group-item-primary.active {
   color: #fff !important;
 }
 [dir=rtl] .menu.bg-primary.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle) {
-  background: linear-gradient(-270deg, rgba(119, 107, 240, 0.7) 0%, #776bf0 100%) !important;
+  background: linear-gradient(-270deg, rgba(119, 107, 240, 0.7) 0%, #CAA767 100%) !important;
 }
 .menu.bg-primary.menu-horizontal .menu-inner > .menu-item.active > .menu-link.menu-toggle {
-  background: linear-gradient(270deg, rgba(119, 107, 240, 0.7) 0%, #776bf0 100%);
+  background: linear-gradient(270deg, rgba(119, 107, 240, 0.7) 0%, #CAA767 100%);
   color: #fff !important;
   box-shadow: 0px 2px 6px 0px rgba(119, 107, 240, 0.3);
 }
@@ -868,7 +868,7 @@ button.list-group-item-primary.active {
   color: #fff !important;
 }
 [dir=rtl] .menu.bg-primary.menu-horizontal .menu-inner > .menu-item.active > .menu-link.menu-toggle {
-  background: linear-gradient(-270deg, rgba(119, 107, 240, 0.7) 0%, #776bf0 100%);
+  background: linear-gradient(-270deg, rgba(119, 107, 240, 0.7) 0%, #CAA767 100%);
   box-shadow: 0px 2px 6px 0px rgba(119, 107, 240, 0.3);
   color: #fff !important;
 }
@@ -878,7 +878,7 @@ button.list-group-item-primary.active {
 }
 .menu.bg-primary.menu-horizontal .menu-item.active > .menu-link:not(.menu-toggle) {
   background: #7468f0;
-  color: #776bf0 !important;
+  color: #CAA767 !important;
 }
 .menu.bg-primary .menu-inner > .menu-item.menu-item-closing .menu-item.open .menu-sub,
 .menu.bg-primary .menu-inner > .menu-item.menu-item-closing .menu-item.open .menu-toggle {

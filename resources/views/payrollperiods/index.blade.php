@@ -39,6 +39,10 @@
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
                 </form>
 
+                <a href="{{route('show-salary-basis-payroll-period', $payrollperiod->id)}}">
+                <button class="btn btn-warning">View Slips</button>
+                </a>
+
               </td>
 
             </tr>
