@@ -76,7 +76,7 @@
 @endsection
 
 @push('scripts')
-<script>
+
 
  $(document).on('change', '.status-toggle', function () {
       var userId = $(this).data('id');
@@ -106,8 +106,7 @@
           }
       });
   });
-</script>
-<script>
+
     @if (session('success'))
         toastr.success("{{ session('success') }}");
     @endif
@@ -115,6 +114,5 @@
     @if (session('error'))
         toastr.error("{{ session('error') }}");
     @endif
-</script>
 @endpush
 

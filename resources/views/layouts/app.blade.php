@@ -90,11 +90,11 @@
         background-color: #ffc107 !important;  /* Yellow */
         color: black !important;
     }
-    @yield('style')
+    @push('styles')
     </style>
 
     <!-- Blade files head links -->
-    @yield('head')
+    @push('head')
 
   </head>
   <body>
@@ -179,11 +179,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
     @stack('scripts')
+    </script>
+
 
 <!-- Toastr JS -->
 
-@yield('footer')
     </body>
 
 </html>

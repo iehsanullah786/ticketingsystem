@@ -1,30 +1,37 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Policies\SalarySlipPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SalarySlipMail;
 use App\Models\SalarySlip;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MailController extends Controller
 {
     public function sendSalarySlip($salaryslip_id)
-    {
-        //access receiver employee
-        $salary_slip=SalarySlip::find($salaryslip_id);
-        $receiveremail=$salary_slip->employee->email;
+{
+    try {
+        // Access receiver employee
+        $salary_slip = SalarySlip::findOrFail($salaryslip_id);
+        $receiveremail = $salary_slip->employee->email;
 
-        // Send email using Mailable class
-        Mail::to($receiveremail)->send(new SalarySlipMail($salary_slip));
+        // Prepare data for PDF
+        $data = [
+            'salary_slip' => $salary_slip
+        ];
+        $pdf = Pdf::loadView('reports.salaryinvoice', $data);
 
+        // Send email with the PDF attachment
+        Mail::to($receiveremail)->send(new SalarySlipMail($salary_slip, $pdf->output()));
 
-//we can passmore variables like var1, var. these are access directkly. but req access by $req->name in blade email file
-
-
-        // Return a response (optional)
-        return back()->with('success', 'Invoice Sent Successfully!');
+        // Add success message to session
+        return back()->with('success', 'Salary slip sent successfully to ' . $receiveremail);
+    } catch (\Exception $e) {
+        // Add error message to session
+        return back()->with('error', 'Failed to send salary slip. ' . $e->getMessage());
     }
 }
 
-
+}
