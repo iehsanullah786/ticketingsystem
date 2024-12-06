@@ -1,13 +1,10 @@
 @extends('layouts.app')
-@php
-use App\Models\AdjustmentType;
-@endphp
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">All Salary Slips </h5>
+      <h5 class="mb-0">Salary Slips</h5>
       <a href="{{ route('salary-slips.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i>
       </a>
@@ -19,59 +16,51 @@ use App\Models\AdjustmentType;
             <th>Employee Name</th>
             <th>Payroll</th>
             <th>Base Salary</th>
-            <th>Adjustment Type</th>
             <th>Adjustment Amount</th>
             <th>Net Amount</th>
             <th>Action</th>
-
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
           @forelse ($salaryslips as $salaryslip)
             <tr>
               <td>
-                <span class="fw-medium">{{$salaryslip->employee->name}}</span>
+                <span class="fw-medium">{{ $salaryslip->employee->name }}</span>
               </td>
               <td>
-                <span class="fw-medium">{{$salaryslip->payrollPeriod->month ." , ". $salaryslip->payrollPeriod->year}}</span>
+                <span class="fw-medium">{{ $salaryslip->payrollPeriod->month . " , " . $salaryslip->payrollPeriod->year }}</span>
               </td>
               <td>
-                <span class="fw-medium">{{ $salaryslip->base_salary}}</span>
-              </td>
-              @php
-
-                $temp=AdjustmentType::find($salaryslip->adjustment_type_id);
-                @endphp
-              <td>
-                <span class="fw-medium">{{
-
-                $temp->name}} </span>
-              </td>
-              <td>
-                <span class="fw-medium">{{ $salaryslip->adjustment_amount}}</span>
-              </td>
-              <td>
-                <span class="fw-medium">{{ $salaryslip->net_salary}}</span>
+                <span class="fw-medium">{{ $salaryslip->base_salary }}</span>
               </td>
 
               <td>
-
-
-              <form method="POST" action="{{ route('salary-slips.destroy', $salaryslip->id) }}"  onsubmit="return confirm('Are you sure you want to delete this adjustmenttype?');" style="display:inline;">
-                      @csrf
-                      @method('DELETE')
-                      <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
+              <span class="fw-medium">
+                {{ $salaryslip->adjustment_amount}}
+                </span>
+              </td>
+              <td>
+                <span class="fw-medium">{{ $salaryslip->net_salary }}</span>
+              </td>
+              <td>
+                <form method="POST" action="{{ route('salary-slips.destroy', $salaryslip->id) }}" onsubmit="return confirm('Are you sure you want to delete this adjustmenttype?');" style="display:inline;">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
                 </form>
-                <a href="{{ route('generate-pdf', ['salary_slip_id' => $salaryslip->id]) }}" class="text-white">
-                <button class="btn btn-success" type="submit">Generate pdf</button>
 
+                <a href="{{ route('generate-pdf', ['salary_slip_id' => $salaryslip->id]) }}" class="text-white">
+                  <button class="btn btn-success" type="submit">Generate PDF</button>
+                </a>
+
+                <a href="{{ route('send.salary-slip', $salaryslip->id) }}" class="text-white">
+                  <button class="btn btn-success" type="submit">Send Email</button>
                 </a>
               </td>
-
             </tr>
           @empty
             <tr>
-              <td colspan="12" class="text-center">No salaryslip found.</td>
+              <td colspan="12" class="text-center">No salary slips found.</td>
             </tr>
           @endforelse
         </tbody>
@@ -81,14 +70,11 @@ use App\Models\AdjustmentType;
 </div>
 
 @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
+  toastr.success("{{ session('success') }}");
+@endif
 
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
+@if (session('error'))
+  toastr.error("{{ session('error') }}");
+@endif
+
 @endsection
-
-
-
-

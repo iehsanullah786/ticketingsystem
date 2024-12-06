@@ -36,23 +36,6 @@
               <td>
                 {{ $employee->email }}
               </td>
-
-  {{--      <td>
-              <div class="d-flex justify-content-between align-items-center">
-              <span class="text-danger">Suspended</span>
-
-                  <div class="form-check form-switch mb-2">
-                    <input data-status="{{ $employee->status }}"
-                          data-id="{{ $employee->id }}"
-                          class="form-check-input status-toggle"
-                          {{ $employee->status->value == \App\userstatus::ACTIVE->value ? 'checked' : '' }}
-                          type="checkbox" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                  </div>
-                  <span class="text-success">Active</span>
-              </div>
-
-              </td> --}}
               <td>
                 {{ $employee->phone}}
               </td>
@@ -79,7 +62,7 @@
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
                 </form>
 
-                <a href="{{route('salary-slips.show', $employee->id)}}">
+                <a href="{{route('selected.employee.salary-slips', $employee->id)}}">
                 <button class="btn btn-warning">View Slips</button>
                 </a>
 
@@ -97,47 +80,4 @@
   </div>
 </div>
 @endsection
-{{--
-@push('scripts')
-<script>
 
- $(document).on('change', '.status-toggle', function () {
-      var userId = $(this).data('id');
-      var newStatus = $(this).is(':checked') ? '{{ \App\UserStatus::ACTIVE->value }}' : '{{ \App\UserStatus::DEACTIVE->value }}';
-      var checkbox = $(this);
-
-      $.ajax({
-          url: '{{ route("employee.toggleStatus") }}', // Add your toggle status route here
-          method: 'POST',
-          data: {
-              _token: '{{ csrf_token() }}',
-              user_id: userId,
-              status: newStatus
-          },
-          success: function(response) {
-            console.info(response.message);
-              if (response.success) {
-                  toastr.success(response.message); // Show success message
-              } else {
-                  toastr.error('Failed to change status.'); // Show error message
-                  checkbox.prop('checked', !checkbox.is(':checked')); // Revert if the action fails
-              }
-          },
-          error: function() {
-              toastr.error('An error occurred while changing the status.'); // Show error message
-              checkbox.prop('checked', !checkbox.is(':checked')); // Revert if AJAX fails
-          }
-      });
-  });
-</script>
-<script>
-
-    @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
-
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
-</script>
-@endpush --}}

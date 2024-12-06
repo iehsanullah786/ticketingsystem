@@ -14,6 +14,6 @@ class AdjustmentType extends Model
 
     public function salarySlip()
     {
-        return $this->belongsTo(SalarySlip::class,foreignKey: 'adjustment_type_id');
+        return $this->belongsTo(SalarySlip::class,foreignKey: 'employee_id');
     }
 }

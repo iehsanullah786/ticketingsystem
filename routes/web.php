@@ -6,6 +6,7 @@ use App\Http\Controllers\SalarySlipController;
 use App\Http\Controllers\AdjustmentTypesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PayrollPeriodController;
 use Illuminate\Support\Facades\Route;
     Route::get('/', function () {
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
         Route::resource('adjustment-types', AdjustmentTypesController::class);
         Route::resource('payroll-periods', PayrollPeriodController::class);
         Route::resource('salary-slips', SalarySlipController::class);
+        Route::get('send/salary-slip/{salaryslip_id}', [MailController::class, 'sendSalarySlip'])->name('send.salary-slip');
+
 
         Route::resource('admins', UserController::class);
 
@@ -27,8 +30,8 @@ use Illuminate\Support\Facades\Route;
         Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::post('users/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
         Route::get('generate-pdf/{salary_slip_id}', [PdfController::class, 'generatePdf'])->name('generate-pdf');
-        Route::get('salary-slips/{employee_id}', [SalarySlipController::class, 'showSlarySlipOfSelectedEmployee'])->name('selected.employee.slips');
-        Route::get('salary-slips/{payroll_period_id}', [SalarySlipController::class, 'SalaryBasisPayrollPeriod'])->name('show-salary-basis-payroll-period');
+        Route::get('salary-slips/employee/{employee_id}', [SalarySlipController::class, 'selectedEmployeeSalarySlips'])->name('selected.employee.salary-slips');
+        Route::get('salary-slips/payroll-period/{payroll_period_id}', [SalarySlipController::class, 'selectedPayrollPeriodSalarySlips'])->name('selected.payroll-period.salary-slips');
     });
 
 

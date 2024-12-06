@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="{{asset('vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}" />
     <link rel="stylesheet" href="{{asset('vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css')}}" />
     <link rel="stylesheet" href="{{asset('vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css')}}" />
+
 <!-- Toastr CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
@@ -89,11 +90,15 @@
         background-color: #ffc107 !important;  /* Yellow */
         color: black !important;
     }
-  
+    @yield('style')
     </style>
+
+    <!-- Blade files head links -->
+    @yield('head')
+
   </head>
   <body>
-
+  @yield('body')
    <!-- Layout wrapper -->
    <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -126,7 +131,7 @@
                     </script>
                     , made with ❤️ by <a href="https://aethon.digital/" target="_blank" class="footer-link">Aethon.digital</a>
                   </div>
-            
+
                   </div>
                 </div>
               </div>
@@ -147,7 +152,7 @@
       <div class="drag-target"></div>
     </div>
     <!-- / Layout wrapper -->
-  
+
 
   <script src="{{asset('vendor/libs/jquery/jquery.js')}}"></script>
     <script src="{{asset('vendor/libs/popper/popper.js')}}"></script>
@@ -177,6 +182,8 @@
     @stack('scripts')
 
 <!-- Toastr JS -->
+
+@yield('footer')
     </body>
 
 </html>

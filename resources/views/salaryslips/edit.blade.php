@@ -15,6 +15,7 @@
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
       </div>
+
         <!-- Mode -->
        <div class="mt-4">
         <label for="mode" class="form-label">Name</label>

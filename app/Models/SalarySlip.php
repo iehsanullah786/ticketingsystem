@@ -14,22 +14,23 @@ class SalarySlip extends Model
     use HasFactory;
     protected $fillable = ['employee_id', 'payroll_period_id', 'adjustment_type_id', 'base_salary', 'adjustment_amount', 'net_salary'];
 
+
     public function employee()
     {
         return $this->belongsTo(Employee::class,'employee_id');
     }
+
 
     public function payrollPeriod()
     {
         return $this->belongsTo(PayrollPeriod::class,'payroll_period_id');
     }
 
+
     public function adjustmentTypes()
     {
-        return $this->hasMany(AdjustmentType::class,'adjustment_type_id');
+        return $this->hasMany(AdjustmentType::class,'employee_id');
     }
 
+
 }
-
-
-

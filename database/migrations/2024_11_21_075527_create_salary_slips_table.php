@@ -19,9 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('payroll_period_id')->nullable();
             $table->foreign('payroll_period_id')->references('id')->on('payroll_periods')->onDelete('cascade');
 
-            $table->unsignedBigInteger('adjustment_type_id')->nullable();
-            $table->foreign('adjustment_type_id')->references('id')->on('adjustment_types')->onDelete('cascade');
-
             $table->decimal('base_salary', 10, 2)->nullable(); // Base salary
             $table->decimal('adjustment_amount', 10, 2)->nullable(); // Total adjustments
             $table->decimal('net_salary', 10, 2)->nullable(); // Net salary (calculated)

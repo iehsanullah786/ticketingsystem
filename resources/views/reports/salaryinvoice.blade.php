@@ -799,20 +799,18 @@ video {
             <tr>
               <td class="border-b-2 border-main pb-3 pl-3 font-bold text-main">Employee Name</td>
               <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Payroll Period</td>
-              <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Adjustment Type</td>
+
 
 
 
             </tr>
           </thead>
           <tbody>
-          @php
-                $temp = AdjustmentType::find($salaryslip->adjustment_type_id);
-            @endphp
+
             <tr>
-              <td class="border-b py-3 pl-3">{{ $salaryslip->employee->name }}</td>
-              <td class="border-b py-3 pl-2">{{ $salaryslip->payrollPeriod->month . ", " . $salaryslip->payrollPeriod->year }}</td>
-              <td class="border-b py-3 pl-2 text-center">{{ $temp->name }}</td>
+              <td class="border-b py-3 pl-3">{{ $salary_slip->employee->name }}</td>
+              <td class="border-b py-3 pl-2">{{ $salary_slip->payrollPeriod->month . ", " . $salary_slip->payrollPeriod->year }}</td>
+
 
             </tr>
 
@@ -830,7 +828,7 @@ video {
                                 <div class="whitespace-nowrap text-slate-400">Base Salary:</div>
                               </td>
                               <td class="border-b p-3 text-right">
-                                <div class="whitespace-nowrap font-bold text-main">{{ $salaryslip->base_salary }}</div>
+                                <div class="whitespace-nowrap font-bold text-main">{{ $salary_slip->base_salary }}</div>
                               </td>
                             </tr>
                             <tr>
@@ -838,7 +836,7 @@ video {
                                 <div class="whitespace-nowrap text-slate-400">Adjustment Amount:</div>
                               </td>
                               <td class="p-3 text-right">
-                                <div class="whitespace-nowrap font-bold text-main">{{ $salaryslip->adjustment_amount }}</div>
+                                <div class="whitespace-nowrap font-bold text-main">{{ $salary_slip->adjustment_amount }}</div>
                               </td>
                             </tr>
                             <tr>
@@ -846,7 +844,7 @@ video {
                                 <div class="whitespace-nowrap font-bold text-white">Total:</div>
                               </td>
                               <td class="bg-main p-3 text-right">
-                                <div class="whitespace-nowrap font-bold text-white">{{ $salaryslip->net_salary }}</div>
+                                <div class="whitespace-nowrap font-bold text-white">{{ $salary_slip->net_salary }}</div>
                               </td>
                             </tr>
                           </tbody>
@@ -863,8 +861,8 @@ video {
 
       <div class="px-14 text-sm text-neutral-700">
         <p class="text-main font-bold">PAYMENT DETAILS</p>
-        <p>Bank Name: {{ $salaryslip->employee->bank }}</p>
-        <p>Account Number: {{ $salaryslip->employee->accountno }}</p>
+        <p>Bank Name: {{ $salary_slip->employee->bank }}</p>
+        <p>Account Number: {{ $salary_slip->employee->accountno }}</p>
       </div>
 
         <footer class="fixed bottom-0 left-0 bg-slate-100 w-full text-neutral-600 text-center text-xs py-3">
