@@ -16,7 +16,10 @@
             <th>Employee Name</th>
             <th>Payroll</th>
             <th>Base Salary</th>
-            <th>Adjustment Amount</th>
+            <th>Fine</th>
+            <th>Days Off Amount</th>
+            <th>Bonus</th>
+
             <th>Net Amount</th>
             <th>Action</th>
           </tr>
@@ -34,10 +37,15 @@
                 <span class="fw-medium">{{ $salaryslip->base_salary }}</span>
               </td>
 
+
               <td>
-              <span class="fw-medium">
-                {{ $salaryslip->adjustment_amount}}
-                </span>
+                <span class="fw-medium">{{ $salaryslip->fine }}</span>
+              </td>
+              <td>
+                <span class="fw-medium">{{ $salaryslip->days_off }}</span>
+              </td>
+              <td>
+                <span class="fw-medium">{{ $salaryslip->bonus }}</span>
               </td>
               <td>
                 <span class="fw-medium">{{ $salaryslip->net_salary }}</span>

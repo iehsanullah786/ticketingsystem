@@ -77,7 +77,7 @@
 
 
 @push('scripts')
-<script>
+
     // Add new adjustment fields when "+" is clicked
     document.getElementById('add-adjustment-field').addEventListener('click', function() {
         var container = document.getElementById('adjustment-fields-container');
@@ -117,5 +117,5 @@
     @if (session('error'))
         toastr.error("{{ session('error') }}");
     @endif
-</script>
+
 @endpush

@@ -56,10 +56,17 @@ class SalarySlipController extends Controller
             // Calculate the adjustment amount based on the type's mode (+ or -)
             $adjustment_amount = $request->adjustment_amount[$key];
             $adjustment_type->amount=$adjustment_amount;
-            if ($adjustment_type->mode == '+') {
-                $net_salary += $adjustment_amount; // Add adjustment amount to net salary
-            } elseif ($adjustment_type->mode == '-') {
+            if ($adjustment_type->id == '1') {
+                $net_salary -= $adjustment_amount; // Add adjustment amount to net salary
+                $salary_slip->days_off =$adjustment_amount;
+            }
+            elseif ($adjustment_type->id == '2') {
                 $net_salary -= $adjustment_amount; // Subtract adjustment amount from net salary
+                $salary_slip->fine =$adjustment_amount;
+            }
+            elseif ($adjustment_type->id == '3') {
+                $net_salary += $adjustment_amount; // Subtract adjustment amount from net salary
+                $salary_slip->bonus =$adjustment_amount;
             }
 
         }

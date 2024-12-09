@@ -5,9 +5,9 @@
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">All adjustmenttypes </h5>
-      <a href="{{ route('adjustment-types.create') }}" class="btn btn-primary">
+      <!-- <a href="{{ route('adjustment-types.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i>
-      </a>
+      </a> -->
     </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
@@ -15,7 +15,7 @@
           <tr>
             <th>Name</th>
             <th>Mode</th>
-            <th>Edit</th>
+            <!-- <th>Edit</th> -->
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
@@ -28,7 +28,7 @@
                 <span class="fw-medium">{{ $adjustmenttype->mode}}</span>
               </td>
 
-              <td>
+              <!-- <td>
               <a href="{{route('adjustment-types.edit', $adjustmenttype->id)}}">
                 <button class="btn btn-warning"><i class="ti ti-edit me-2"></i></button>
               </a>
@@ -39,7 +39,7 @@
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
                 </form>
 
-              </td>
+              </td> -->
 
             </tr>
           @empty

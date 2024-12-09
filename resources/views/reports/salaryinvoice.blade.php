@@ -131,7 +131,6 @@ Add the correct font weight in Edge and Safari.
 
 b,
 strong {
-strong {
   font-weight: bolder;
 }
 
@@ -799,10 +798,9 @@ video {
             <tr>
               <td class="border-b-2 border-main pb-3 pl-3 font-bold text-main">Employee Name</td>
               <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Payroll Period</td>
-
-
-
-
+              <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Fine</td>
+              <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Days Off</td>
+              <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Bonus</td>
             </tr>
           </thead>
           <tbody>
@@ -810,6 +808,9 @@ video {
             <tr>
               <td class="border-b py-3 pl-3">{{ $salary_slip->employee->name }}</td>
               <td class="border-b py-3 pl-2">{{ $salary_slip->payrollPeriod->month . ", " . $salary_slip->payrollPeriod->year }}</td>
+              <td class="border-b py-3 pl-3">{{ $salary_slip->fine }}</td>
+              <td class="border-b py-3 pl-3">{{ $salary_slip->days_off}}</td>
+              <td class="border-b py-3 pl-3">{{ $salary_slip->bonus }}</td>
 
 
             </tr>

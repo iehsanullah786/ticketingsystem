@@ -16,9 +16,9 @@
 
 
     <meta name="description" content="" />
-
+    <title>@yield('title', 'Aethon Payroll')</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{asset('img/avatars/logo.png')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
