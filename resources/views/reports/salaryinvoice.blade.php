@@ -744,8 +744,11 @@ video {
             <tr>
               <td class="w-full align-top">
                 <div>
-                  <img src="img\avatars\logo.webp" class="h-12" />
-                </div>
+                <img style="position:absolute"
+     src="data:image/jpeg;base64,{{ base64_encode(file_get_contents(public_path('img/avatars/logo.png'))) }}"
+     width="40"
+     height="20"
+     alt="Logo">
               </td>
 
               <td class="align-top">
