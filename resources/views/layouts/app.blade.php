@@ -18,7 +18,7 @@
     <meta name="description" content="" />
     <title>@yield('title', 'Aethon Payroll')</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset('img/avatars/logo.png')}}" />
+    <link rel="icon" type="image/x-icon" href="{{asset('img/avatars/favicon.png')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -138,15 +138,7 @@
                 </div>
               </div>
 
-              @push('scripts')
-    @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
-
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
-@endpush
+\
             </footer>
             <!-- / Footer -->
 
@@ -191,7 +183,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
+
     @stack('scripts')
 
     @if (session('success'))
@@ -202,9 +196,7 @@
         toastr.error("{{ session('error') }}");
     @endif
 
-
     </script>
-
 
 <!-- Toastr JS -->
 

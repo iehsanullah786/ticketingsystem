@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('bank')->nullable();
             $table->string('accountno')->nullable();
             $table->decimal('salary', 10, 2)->nullable();
+            $table->decimal('salary', 10, 2)->nullable();
             $table->timestamps();
         });
     }

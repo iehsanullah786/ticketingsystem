@@ -4,15 +4,28 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-md-12">
-
             <div class="card mb-6">
                 <!-- Account -->
 
             </div>
+            <!-- Password Change Section -->
+
+
+
             <div class="card-body pt-4">
-                <form id="formAccountSettings" method="POST" action="{{ route('profile.update') }}">
+                <form id="formAccountSettings" method="POST" action="{{ route('profile.update')}}" enctype="multipart/form-data">
                     @csrf
                     @method('patch') <!-- Use PUT method for updating the profile -->
+
+                    <div class="col-12">
+                        <h5 class="mb-4">Change Image</h5>
+                        <img src="{{asset(auth()->user()->image)}}" height="100px" width="100px">
+                        <input type="file" name="image">
+                    </div>
+
+                    <div class="col-12">
+                        <h5 class="mt-4">Change Personal Details</h5>
+                    </div>
 
                     <div class="row">
                         <!-- First Name -->
@@ -69,7 +82,7 @@
                             <h5 class="mb-4">Change Password</h5>
                         </div>
 
-                        <!-- Current Password -->
+                       <!-- Current Password -->
                         <div class="mb-4 col-md-6">
                             <label for="current_password" class="form-label">Current Password</label>
                             <input class="form-control @error('current_password') is-invalid @enderror" type="password"
@@ -113,4 +126,8 @@
 </div>
 
 @endsection
+
+
+
+
 
