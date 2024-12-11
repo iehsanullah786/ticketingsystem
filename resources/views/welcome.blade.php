@@ -1,13 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{{asset('img/avatars/logo.png')}}" />
-    <title>Aethon Payroll</title>
+@extends('layouts.web')
+@section('content')
+<div class="header">
+        <img src="{{asset('img/avatars/logo.png')}}" alt="Company Logo">
+    </div>
 
-    <style>
-        body {
+    <div class="login-container">
+    <div class="login-section">
+        <h2>Super Admin Login</h2>
+        <p>Access the management dashboard to oversee all your business operations.</p>
+        @if(Auth::check())
+            <a href="{{ route('admin.dashboard') }}"><button class="login-btn">Dashboard</button></a>
+        @else
+            <a href="{{ route('admin.login') }}"><button class="login-btn">Login</button></a>
+        @endif
+    </div>
+    </div>
+@endsection
+
+
+@push('styles')
+body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -85,32 +97,4 @@
 
             color: #CAA767;
         }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <img src="{{asset('img/avatars/logo.png')}}" alt="Company Logo">
-    </div>
-
-    <div class="login-container">
-    <div class="login-section">
-        <h2>Super Admin Login</h2>
-        <p>Access the management dashboard to oversee all your business operations.</p>
-        @if(Auth::check())
-            <a href="{{ route('admin.dashboard') }}"><button class="login-btn">Dashboard</button></a>
-        @else
-            <a href="{{ route('admin.login') }}"><button class="login-btn">Login</button></a>
-        @endif
-    </div>
-</div>
-
-
-
-
-
-    </div>
-
-
-
-</body>
-</html>
+@endpush

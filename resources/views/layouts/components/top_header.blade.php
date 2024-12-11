@@ -19,7 +19,7 @@
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-               
+
 
                 <!-- Style Switcher -->
                 <!-- <li class="nav-item dropdown-style-switcher dropdown">
@@ -52,7 +52,7 @@
                 <!-- / Style Switcher-->
 
                 <!-- Quick links  -->
-               
+
                 <!-- Quick links -->
 
                 <!-- Notification -->
@@ -342,8 +342,8 @@
                         <i class="ti ti-user me-3 ti-md"></i><span class="align-middle">My Profile</span>
                       </a>
                     </li>
-                
-                   
+
+
                     <li>
                      <!-- Logout Button -->
                   <div class="d-grid px-2 pt-2 pb-1">
