@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Dynamic Page Title')
+
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">All Sites Admin</h5>
+      <h5 class="mb-0">All Admin</h5>
       <a href="{{ route('admins.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Add New Site Admin
       </a>
@@ -108,12 +108,6 @@
       });
   });
 
-    @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
 
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
 @endpush
 

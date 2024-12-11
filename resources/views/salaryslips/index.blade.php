@@ -6,7 +6,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">Salary Slips</h5>
       <a href="{{ route('salary-slips.create') }}" class="btn btn-primary">
-        <i class="ti ti-plus me-1"></i>
+        <i class="ti ti-plus me-1"></i> Add new Salary Slip
       </a>
     </div>
     <div class="table-responsive text-nowrap">
@@ -19,7 +19,6 @@
             <th>Fine</th>
             <th>Days Off Amount</th>
             <th>Bonus</th>
-
             <th>Net Amount</th>
             <th>Action</th>
           </tr>
@@ -78,12 +77,4 @@
 </div>
 @endsection
 
-@push('scripts')
-    @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
 
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
-@endpush

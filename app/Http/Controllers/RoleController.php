@@ -30,16 +30,16 @@ class RoleController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-    
+
         // Create user
         Role::create([
             'name' => $request->input('name'),
         ]);
-    
+
         // Redirect with success message
-        return redirect()->route('roles.index')->with('success', 'User created successfully!');
+        return redirect()->route('roles.index')->with('success', 'Role created successfully!');
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -64,7 +64,7 @@ class RoleController extends Controller
       $role=Role::find($id);
       $role->name=$request->name;
       $role->save();
-      
+
       return redirect()->route('aroles.index');
     }
 
@@ -74,7 +74,7 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         Role::destroy($id);
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('success', 'Role deleted successfully!');;
 
     }
 }

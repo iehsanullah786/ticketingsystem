@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card mb-6">
-    <h5 class="card-header">Edit User</h5>
+    <h5 class="card-header">Edit Admin</h5>
     <form method="POST" action="{{ route('admins.update', $user->id) }}" class="card-body">
       @csrf
       @method('PUT')
@@ -62,14 +62,4 @@
 </div>
 @endsection
 
-@push('scripts')
-<script>
-    @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
 
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
-</script>
-@endpush

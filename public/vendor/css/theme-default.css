@@ -727,7 +727,7 @@ button.list-group-item-primary.active {
 }
 .menu.bg-primary.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle) {
   background: linear-gradient(270deg, rgba(119, 107, 240, 0.7) 0%, #CAA767 100%);
-  box-shadow: 0px 2px 6px 0px rgba(119, 107, 240, 0.3);
+  box-shadow: 0px 2px 6px 0px ;
   color: #fff !important;
 }
 .menu.bg-primary.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle).menu-toggle::after {
@@ -736,7 +736,7 @@ button.list-group-item-primary.active {
 .menu.bg-primary.menu-horizontal .menu-inner > .menu-item.active > .menu-link.menu-toggle {
   background: linear-gradient(270deg, rgba(119, 107, 240, 0.7) 0%, #CAA767 100%);
   color: #fff !important;
-  box-shadow: 0px 2px 6px 0px rgba(119, 107, 240, 0.3);
+  box-shadow: 0px 2px 6px 0px ;
 }
 .menu.bg-primary.menu-horizontal .menu-inner > .menu-item.active > .menu-link.menu-toggle.menu-toggle::after {
   color: #fff !important;
@@ -1453,7 +1453,7 @@ li.ui-timepicker-selected,
 }
 .bg-menu-theme.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle) {
   background: linear-gradient(270deg, #CAA767 0%, #CAA767 100%);
-  box-shadow: 0px 2px 6px 0px rgba(0, 132, 111, 0.3);
+
   color: #fff !important;
 }
 .bg-menu-theme.menu-vertical .menu-item.active > .menu-link:not(.menu-toggle).menu-toggle::after {
@@ -1462,7 +1462,7 @@ li.ui-timepicker-selected,
 .bg-menu-theme.menu-horizontal .menu-inner > .menu-item.active > .menu-link.menu-toggle {
   background: linear-gradient(270deg, #CAA767 0%, #CAA767 100%);
   color: #fff !important;
-  box-shadow: 0px 2px 6px 0px rgba(0, 132, 111, 0.3);
+
 }
 .bg-menu-theme.menu-horizontal .menu-inner > .menu-item.active > .menu-link.menu-toggle.menu-toggle::after {
   color: #fff !important;

@@ -6,7 +6,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">All Payroll Periods </h5>
       <a href="{{ route('payroll-periods.create') }}" class="btn btn-primary">
-        <i class="ti ti-plus me-1"></i>
+        <i class="ti ti-plus me-1"></i>Add new Payroll Period
       </a>
     </div>
     <div class="table-responsive text-nowrap">
@@ -57,13 +57,6 @@
   </div>
 </div>
 
-@if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
-
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
 @endsection
 
 

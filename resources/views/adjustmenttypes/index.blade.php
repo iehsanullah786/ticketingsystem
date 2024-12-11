@@ -4,7 +4,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">All adjustmenttypes </h5>
+      <h5 class="mb-0">All Adjustment Types </h5>
       <!-- <a href="{{ route('adjustment-types.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i>
       </a> -->
@@ -53,13 +53,7 @@
   </div>
 </div>
 
-@if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
 
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
 @endsection
 
 

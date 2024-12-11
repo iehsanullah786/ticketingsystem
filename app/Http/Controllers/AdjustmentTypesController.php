@@ -49,13 +49,13 @@ class AdjustmentTypesController extends Controller
       $adjustmenttype=AdjustmentType::find($id);
       $adjustmenttype->update($request->validated());
 
-      return redirect()->route('adjustment-types.index')->with('success', 'Employee Updated successfully!');
+      return redirect()->route('adjustment-types.index')->with('success', 'Adjustment Type Updated successfully!');
     }
 
 
     public function destroy(string $id)
     {
         AdjustmentType::destroy($id);
-        return redirect()->route('adjustment-types.index');
+        return redirect()->route('adjustment-types.index')->with('success', 'Adjustment Type Deleted successfully!');;
     }
 }

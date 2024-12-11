@@ -135,6 +135,16 @@
                   </div>
                 </div>
               </div>
+
+              @push('scripts')
+    @if (session('success'))
+        toastr.success("{{ session('success') }}");
+    @endif
+
+    @if (session('error'))
+        toastr.error("{{ session('error') }}");
+    @endif
+@endpush
             </footer>
             <!-- / Footer -->
 
@@ -181,6 +191,25 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
     @stack('scripts')
+
+
+    toastr.options = {
+        "positionClass": "toast-bottom-right", // Change position to bottom right
+        "timeOut": "5000", // Optional: Time before toast disappears
+        "extendedTimeOut": "1000", // Optional: Time for hover pause
+        "closeButton": true, // Optional: Add a close button
+        "progressBar": true // Optional: Add a progress bar
+    };
+
+    @if (session('success'))
+        toastr.success("{{ session('success') }}");
+    @endif
+
+    @if (session('error'))
+        toastr.error("{{ session('error') }}");
+    @endif
+
+
     </script>
 
 

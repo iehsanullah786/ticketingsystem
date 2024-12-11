@@ -24,7 +24,7 @@ class PayrollPeriodController extends Controller
     public function store(StorePayrollPeriodRequest $request)
     {
         PayrollPeriod::create($request->validated());
-        return redirect()->route('payroll-periods.index')->with('success', value: 'Adjustment Type created successfully.');
+        return redirect()->route('payroll-periods.index')->with('success', value: 'Payroll Period created successfully.');
     }
 
 
@@ -46,13 +46,13 @@ class PayrollPeriodController extends Controller
       $payrollperiod=PayrollPeriod::find($id);
       $payrollperiod->update($request->validated());
 
-      return redirect()->route('payroll-periods.index')->with('success', 'Employee Updated successfully!');
+      return redirect()->route('payroll-periods.index')->with('success', 'Payroll Period Updated successfully!');
     }
 
 
     public function destroy(string $id)
     {
         PayrollPeriod::destroy($id);
-        return redirect()->route('payroll-periods.index');
+        return redirect()->route('payroll-periods.index')->with('success', 'Payroll Period Deleted successfully!');;
     }
 }

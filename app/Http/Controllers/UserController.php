@@ -108,7 +108,7 @@ class UserController extends Controller
 
 
         // Redirect back with success message
-        return redirect()->route('admins.index')->with('message', 'User deleted successfully');
+        return redirect()->route('admins.index')->with('success', 'User deleted successfully');
     }
     public function toggleStatus(Request $request)
     {

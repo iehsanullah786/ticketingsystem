@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card mb-6">
-    <h5 class="card-header">Payrollperiod Creation Form</h5>
+    <h5 class="card-header">Payroll Period Creation Form</h5>
     <form method="POST" action="{{ route('payroll-periods.store') }}" class="card-body">
       @csrf
 
@@ -33,15 +33,6 @@
     </div>
 
  @endsection
- @push('scripts')
- <script>
-    @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @endif
 
-    @if (session('error'))
-        toastr.error("{{ session('error') }}");
-    @endif
-</script>
-@endpush
+
 
