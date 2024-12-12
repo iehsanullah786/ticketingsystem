@@ -5,7 +5,6 @@ namespace App;
 enum RolesEnum: string
 {
     // case NAMEINAPP = 'name-in-database';
-
     case SUPERADMIN = 'super-admin';
     case SITEMANAGER = 'site-manager';
     case SITEUSER = 'site-user';

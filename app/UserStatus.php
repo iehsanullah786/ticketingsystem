@@ -1,7 +1,5 @@
 <?php
-
 namespace App;
-
 enum UserStatus: string
 {
     case ACTIVE = 'active';
@@ -15,7 +13,4 @@ enum UserStatus: string
             static::DEACTIVE => 'Deactive',
         };
     }
-
-
-
 }

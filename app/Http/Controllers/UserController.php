@@ -14,16 +14,12 @@ use Hash;
 
 class UserController extends Controller
 {
-  /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
-        $users=User::all();
-       return view('users.index', compact('users'));
+        // Get all users excluding the logged-in user
+        $users = User::where('id', '!=', auth()->id())->get();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -43,15 +39,8 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
-        // Create Site Manager User
 
         User::create($request->validated());
-
-        // Assign Role
-        // $user->assignRole(RolesEnum::SITEUSER);
         return redirect()->route('admins.index')->with('success', value: 'User created successfully.');
     }
 
@@ -60,9 +49,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
 
     }
 
@@ -124,40 +110,11 @@ class UserController extends Controller
         }
         // Save the user
         $user->save();
+
         return response()->json([
             'success' => true,
-            'message' => 'Status changed successfully!'
+            'message' => 'Status updated successfully.',
         ]);
+
     }
-    /**
-     * Display a listing of the resource.
-     */
-    // public function profileEdit(Request $request)
-    // {
-    //     return view('profile.edit', [
-    //         'user' => $request->user(),
-    //     ]);
-    // }
-      /**
-     * Update the user's profile information.
-     */
-    // public function profileUpdate(ProfileUpdateRequest $request): RedirectResponse
-    // {
-    //     $user = $request->user();
-
-    //     // Update user's profile information
-    //     $user->fill($request->except(['password']));
-    //     if ($request->user()->isDirty('email')) {
-    //         $user->email_verified_at = null;
-    //     }
-
-    //     // Check if a new password has been set
-    //     if ($request->filled('password')) {
-    //         $user->password = Hash::make($request->password);
-    //     }
-
-    //     $user->save();
-    //     return Redirect::route('user.profile.edit')->with('success', value: 'Profile updated successfully.');
-
-    // }
 }

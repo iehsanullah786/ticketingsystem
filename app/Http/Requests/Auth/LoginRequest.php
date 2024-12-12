@@ -41,7 +41,18 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $credentials = $this->only('email', 'password');
+        $user = \App\Models\User::where('email', $credentials['email'])->first();
+
+        // Check if user exists and status is active
+        if ($user && $user->status !== \App\UserStatus::ACTIVE) {
+            throw ValidationException::withMessages([
+                'email' => 'Your account is Suspended. Please contact support.',
+            ]);
+        }
+
+        // Attempt login
+        if (! Auth::attempt($credentials, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

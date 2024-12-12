@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
@@ -35,22 +33,22 @@
               <td>
               <div class="d-flex justify-content-between align-items-center">
               <span class="text-danger">Suspended</span>
-
                   <div class="form-check form-switch mb-2">
                     <input data-status="{{ $user->status }}"
                           data-id="{{ $user->id }}"
                           class="form-check-input status-toggle"
-                          {{ $user->status == \App\UserStatus::ACTIVE->value ? 'checked' : '' }}
+                          {{ $user->status->value == \App\UserStatus::ACTIVE->value ? 'checked' : '' }}
                           type="checkbox" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                   </div>
                   <span class="text-success">Active</span>
               </div>
-
               </td>
+
               <td>
                 {{ $user->created_at->format('d-m-Y') }}
               </td>
+
               <td>
               <a href="{{route('admins.edit', $user->id)}}">
                 <button class="btn btn-warning"><i class="ti ti-edit me-2"></i></button>
@@ -60,13 +58,13 @@
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
-                </form>
+            </form>
 
               </td>
             </tr>
           @empty
             <tr>
-              <td colspan="5" class="text-center">No User found.</td>
+              <td colspan="5" class="text-center">No User Found.</td>
             </tr>
           @endforelse
         </tbody>
@@ -77,13 +75,10 @@
 @endsection
 
 @push('scripts')
-
-
  $(document).on('change', '.status-toggle', function () {
       var userId = $(this).data('id');
       var newStatus = $(this).is(':checked') ? '{{ \App\UserStatus::ACTIVE->value }}' : '{{ \App\UserStatus::DEACTIVE->value }}';
       var checkbox = $(this);
-
       $.ajax({
           url: '{{ route("users.toggleStatus") }}', // Add your toggle status route here
           method: 'POST',
@@ -107,7 +102,5 @@
           }
       });
   });
-
-
 @endpush
 
