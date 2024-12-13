@@ -41,6 +41,7 @@ class ProfileController extends Controller
         //Handle file upload
         if($request->file('image'))
         {
+
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;

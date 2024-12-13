@@ -20,7 +20,7 @@ class ProfileUpdateRequest extends FormRequest
             'first_name' => 'string|max:50',
             'last_name' => 'string|max:50',
             'email' => 'email', // Ignore current user's email
-            'phone' => 'string|max:15',
+
             'current_password' => 'nullable|string|min:8',
             'password' => 'nullable|string|min:8|confirmed', // 'confirmed' ensures it matches `password_confirmation`
         ];
