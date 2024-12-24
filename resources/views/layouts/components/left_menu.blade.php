@@ -24,36 +24,18 @@
       </a>
     </li>
 
-    <!-- Employees -->
+    <!-- Employees
     <li class="menu-item {{ request()->is('admin/employees*') ? ' active' : '' }}">
       <a href="{{ route('employees.index') }}" class="menu-link">
         <i class="menu-icon tf-icons ti ti-users"></i>
         <div data-i18n="Employees">Employees</div>
       </a>
-    </li>
+    </li>-->
 
-    <!-- Adjustment Types -->
-    <li class="menu-item {{ request()->is('admin/adjustment-types*') ? ' active' : '' }}">
-      <a href="{{ route('adjustment-types.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons ti ti-adjustments-horizontal"></i>
-        <div data-i18n="Adjustment Types">Adjustment Types</div>
-      </a>
-    </li>
 
-    <!-- Payroll Periods -->
-    <li class="menu-item {{ request()->is('admin/payroll-periods*') ? ' active' : '' }}">
-      <a href="{{ route('payroll-periods.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons ti ti-calendar"></i>
-        <div data-i18n="Payroll Periods">Payroll Periods</div>
-      </a>
-    </li>
 
-    <!-- Salary Slips -->
-    <li class="menu-item {{ request()->is('admin/salary-slips*') ? ' active' : '' }}">
-      <a href="{{ route('salary-slips.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons ti ti-file-invoice"></i>
-        <div data-i18n="Salary Slips">Salary Slips</div>
-      </a>
-    </li>
+
+
+
   </ul>
 </aside>

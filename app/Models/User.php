@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+
 use App\UserStatus;
 
 class User extends Authenticatable
@@ -50,4 +51,5 @@ class User extends Authenticatable
             'status' => UserStatus::class, // This is fine for your UserStatus enum
         ];
     }
+
 }
