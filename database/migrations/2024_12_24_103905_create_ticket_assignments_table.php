@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('ticket_assignments', function (Blueprint $table) {
             $table->id();
-            $table->string('body')->nullable();
-            $table->boolean('is_read')->nullable();
-            $table->unsignedBigInteger('sender_id')->nullable();
-            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
-
-            $table->unsignedBigInteger('receiver_id')->nullable();
-            $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
-
             $table->unsignedBigInteger('ticket_id')->nullable();
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
+
+            $table->unsignedBigInteger('agent_id')->nullable();
+            $table->foreign('agent_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('ticket_assignments');
     }
 };

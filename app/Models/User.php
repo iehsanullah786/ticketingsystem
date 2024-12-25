@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-
+use App\Models\TicketAssignment;
 use App\UserStatus;
-
+use App\Models\Message;
+use App\Models\Ticket;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
@@ -26,6 +27,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'image',
+        'status',
     ];
 
     /**
@@ -50,6 +52,23 @@ class User extends Authenticatable
             'password' => 'hashed',
             'status' => UserStatus::class, // This is fine for your UserStatus enum
         ];
+    }
+
+    //as a parent
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class,'sender_id');
+    }
+
+
+    public function receivedMessages()
+    {
+        return $this->hasMany(Ticket::class,'receiver_id');
+    }
+
+    public function assignedTickets()
+    {
+        return $this->hasMany(TicketAssignment::class,'agent_id');
     }
 
 }

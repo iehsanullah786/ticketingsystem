@@ -6,7 +6,7 @@ use App\Models\Messages;
 use App\Http\Requests\StoreMessagesRequest;
 use App\Http\Requests\UpdateMessagesRequest;
 
-class MessagesController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
