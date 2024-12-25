@@ -1,8 +1,8 @@
 <?php
 
 namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\PrioritiesEnum;
+use App\Models\Priority;
 use Illuminate\Database\Seeder;
 
 class PrioritySeeder extends Seeder
@@ -12,6 +12,17 @@ class PrioritySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $input = [
+            PrioritiesEnum::NORMAL,
+            PrioritiesEnum::MEDIUM,
+            PrioritiesEnum::URGENT,
+            PrioritiesEnum::INTERMEDIATE,
+        ];
+
+        foreach ($input as $value) {
+            Priority::create([
+                'name' => $value,
+            ]);
+        }
     }
 }

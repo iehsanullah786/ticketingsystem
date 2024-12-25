@@ -13,7 +13,8 @@ class CannedReplyController extends Controller
      */
     public function index()
     {
-        //
+        $cannedReplies=CannedReply::all();
+        return view('canned_replies.index', compact( 'cannedReplies'));
     }
 
     /**
@@ -21,7 +22,7 @@ class CannedReplyController extends Controller
      */
     public function create()
     {
-        //
+        return view('canned_replies.create');
     }
 
     /**
@@ -29,7 +30,8 @@ class CannedReplyController extends Controller
      */
     public function store(StoreCannedReplyRequest $request)
     {
-        //
+        CannedReply::create($request->validated());
+        return redirect()->route('canned-replies.index')->with('success', value: 'Canned Reply created successfully.');
     }
 
     /**
@@ -43,24 +45,29 @@ class CannedReplyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CannedReply $cannedReply)
+    public function edit($id)
     {
-        //
+        $cannedReply=CannedReply::find($id);
+        return view('canned_replies.edit', compact('cannedReply'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCannedReplyRequest $request, CannedReply $cannedReply)
+    public function update(UpdateCannedReplyRequest $request, $id)
     {
-        //
+        $CannedReply=CannedReply::find($id);
+        $CannedReply->update($request->validated());
+
+        return redirect()->route('canned-replies.index')->with('success', 'Canned Reply Updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CannedReply $cannedReply)
+    public function destroy( $id)
     {
-        //
+        CannedReply::destroy($id);
+        return redirect()->route('canned-replies.index')->with('success', 'Canned Reply Deleted successfully!');
     }
 }

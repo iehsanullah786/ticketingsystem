@@ -12,7 +12,7 @@ class CannedReply extends Model
     /** @use HasFactory<\Database\Factories\CannedReplyFactory> */
     use HasFactory;
 
-    protected $fillable = ['title', 'body ']; // Fillable attributes
+    protected $fillable = ['title', 'body']; // Fillable attributes
 
 
 }

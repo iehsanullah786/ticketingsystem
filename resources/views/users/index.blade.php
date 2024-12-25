@@ -4,7 +4,7 @@
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">All Admin</h5>
-      <a href="{{ route('admins.create') }}" class="btn btn-primary">
+      <a href="{{ route('users.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Add New Site Admin
       </a>
     </div>
@@ -50,11 +50,11 @@
               </td>
 
               <td>
-              <a href="{{route('admins.edit', $user->id)}}">
+              <a href="{{route('users.edit', $user->id)}}">
                 <button class="btn btn-warning"><i class="ti ti-edit me-2"></i></button>
               </a>
 
-              <form method="POST" action="{{ route('admins.destroy', $user->id) }}"  onsubmit="return confirm('Are you sure you want to delete this user?');" style="display:inline;">
+              <form method="POST" action="{{ route('users.destroy', $user->id) }}"  onsubmit="return confirm('Are you sure you want to delete this user?');" style="display:inline;">
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 use App\RolesEnum;
 use App\UserStatus;
 use App\Http\Requests\StoreUserRequest;
@@ -27,10 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
-        return view(view: 'users.create');
+
+        $roles=Role::all();
+        return view( 'users.create', compact('roles'));
 
     }
 
@@ -40,8 +40,12 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
 
-        User::create($request->validated());
-        return redirect()->route('admins.index')->with('success', value: 'User created successfully.');
+        $user=User::create($request->validated());
+        $role=Role::find($request->role);
+        $roleName=$role->name;
+        $user->assignRole($roleName);
+        return redirect()->route('users.index')->with('success', value: 'User created successfully.');
+
     }
 
     /**

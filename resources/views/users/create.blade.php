@@ -3,10 +3,10 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card mb-6">
     <h5 class="card-header">Admin Creation Form</h5>
-    <form method="POST" action="{{ route('admins.store') }}" class="card-body">
+    <form method="POST" action="{{ route('users.store') }}" class="card-body">
       @csrf
 
-<!-- Name -->
+        <!-- Name -->
       <div class="mt-4">
         <label for="name" class="form-label">First Name</label>
         <input type="text" id="first_name" name="first_name" value="{{ old('first_name')}}" class="form-control" required autofocus autocomplete="first_name" />
@@ -14,9 +14,10 @@
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
       </div>
+
       <div class="mt-4">
         <label for="name" class="form-label"> Last Name</label>
-        <input type="text" id="last_name" name="last_name" value="{{ old('last_name')}}" class="form-control" required autofocus autocomplete="last_name" />
+        <input type="text" id="last_name" name="last_name" value="{{ old('last_name')}}" class="form-control"  autofocus autocomplete="last_name" />
         @error('last_name')
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
@@ -29,7 +30,18 @@
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
       </div>
-
+      <!-- Role -->
+      <div class="mt-4">
+        <label for="role" class="form-label">Select Role</label>
+        <select name="role" class="form-control">
+            @foreach ($roles as $role)
+            <option value="{{$role->id}}">{{ \App\RolesEnum::from($role->name)->label() }}</option>
+            @endforeach
+        </select>
+        @error('role')
+          <div class="mt-2 text-danger">{{ $message }}</div>
+        @enderror
+      </div>
       <!-- Password -->
       <div class="mt-4">
         <label for="password" class="form-label">Password</label>
@@ -51,7 +63,7 @@
       <!-- Submit and Cancel -->
       <div class="pt-4">
         <button type="submit" class="btn btn-primary me-4">Submit</button>
-        <a href="{{ route('admins.index') }}" class="btn btn-secondary">Cancel</a>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>
       </div>
     </form>
   </div>
