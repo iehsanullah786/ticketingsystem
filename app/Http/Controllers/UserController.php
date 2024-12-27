@@ -61,12 +61,10 @@ class UserController extends Controller
      */
     public function edit( $id)
     {
+        $roles=Role::all();
         $user=User::find($id);
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
-              // Fetch all tenants from the database
-        return view('users.edit', compact('user'));
+
+        return view('users.edit', compact('user','roles'));
     }
 
     /**
@@ -75,36 +73,38 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, string $id)
     {
 
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
     // Update user details
-    $salaryslips = User::find($id);
-    $salaryslips->update($request->validated());
+    $user = User::find($id);
+    $user->update($request->validated());
 
-    // Redirect with a success message
-    return redirect()->route('admins.index')->with('success', 'User updated successfully.');
+    //get an remove existing assigned role
+    $roles = $user->getRoleNames();
+    foreach($roles as $role){
+        $user->removeRole($role);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //assign new role
+    $role=Role::find($request->role);
+    $roleName=$role->name;
+    $user->assignRole($roleName);
+
+    // Redirect with a success message
+    return redirect()->route('users.index')->with('success', 'User updated successfully.');
+    }
+
+
     public function destroy(string $id )
     {
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
+
         User::destroy($id);
 
 
         // Redirect back with success message
-        return redirect()->route('admins.index')->with('success', 'User deleted successfully');
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
     public function toggleStatus(Request $request)
     {
-        // if (!Auth::user()->hasRole(RolesEnum::SITEMANAGER->value)) {
-        //     abort(code: 403);
-        // }
+
         $user = User::findOrFail($request->user_id);
         // Toggle status
         if ($user->status === UserStatus::ACTIVE) {

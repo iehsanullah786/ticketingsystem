@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Message;
 use App\Models\Priority;
 use App\Models\Status;
+use App\Models\User;
 use App\Models\TicketAssignment;
 
 class Ticket extends Model
@@ -33,9 +34,9 @@ class Ticket extends Model
         return $this->hasMany(Message::class,'ticket_id');
     }
 
-    public function assignedTickets()
+    public function customer()
     {
-        return $this->hasMany(TicketAssignment::class,'ticket_id');
+        return $this->belongsTo(User::class,'customer_user_id');
     }
 
 }

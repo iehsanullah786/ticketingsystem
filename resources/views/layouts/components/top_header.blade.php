@@ -320,7 +320,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item mt-0" href="pages-account-settings-account.html">
+                      <a class="dropdown-item mt-0" >
                         <div class="d-flex align-items-center">
                           <div class="flex-shrink-0 me-2">
                             <div class="avatar avatar-online">
@@ -329,7 +329,12 @@
                           </div>
                           <div class="flex-grow-1">
                             <h6 class="mb-0">{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h6>
-                            <small class="text-muted">{{ Auth::user()->email }}</small>
+                            <small class="text-muted">
+                            @php
+                                $neatroles =Auth::user()->getRoleNames()->implode(', ');
+                            @endphp
+                                {{ \App\RolesEnum::from($neatroles)->label() }}
+                            </small>
                           </div>
                         </div>
                       </a>

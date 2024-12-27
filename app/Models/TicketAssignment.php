@@ -11,15 +11,4 @@ class TicketAssignment extends Model
     /** @use HasFactory<\Database\Factories\TicketAssignmentFactory> */
     use HasFactory;
     protected $fillable = ['ticket_id', 'agent_id']; // Fillable attributes
-
-    //as a child
-    public function ticket()
-    {
-        return $this->belongsTo(Ticket::class,'ticket_id');
-    }
-
-    public function agent()
-    {
-        return $this->belongsTo(User::class,'agent_id');
-    }
 }

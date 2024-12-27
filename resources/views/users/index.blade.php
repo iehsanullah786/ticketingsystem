@@ -14,6 +14,7 @@
           <tr>
             <th>Full Name</th>
             <th>Email</th>
+            <th>role</th>
             <th>Status</th>
             <th>Created Date</th>
             <th>Actions</th>
@@ -28,6 +29,12 @@
               </td>
               <td>
                 {{ $user->email }}
+              </td>
+              <td>
+                @php
+                        $neatroles = $user->getRoleNames()->implode(', ');
+                @endphp
+                {{ \App\RolesEnum::from($neatroles)->label() }}
               </td>
 
               <td>
@@ -72,6 +79,7 @@
     </div>
   </div>
 </div>
+
 @endsection
 
 @push('scripts')

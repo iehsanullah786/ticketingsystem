@@ -54,7 +54,7 @@ class User extends Authenticatable
         ];
     }
 
-    //as a parent
+    //As a parent
     public function sentMessages()
     {
         return $this->hasMany(Message::class,'sender_id');
@@ -66,9 +66,9 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class,'receiver_id');
     }
 
-    public function assignedTickets()
+    public function tickets()
     {
-        return $this->hasMany(TicketAssignment::class,'agent_id');
+        return $this->hasMany(Ticket::class,'customer_user_id');
     }
 
 }

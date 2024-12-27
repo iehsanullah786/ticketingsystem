@@ -3,7 +3,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card mb-6">
     <h5 class="card-header">Edit Admin</h5>
-    <form method="POST" action="{{ route('admins.update', $user->id) }}" class="card-body">
+    <form method="POST" action="{{ route('users.update', $user->id) }}" class="card-body">
       @csrf
       @method('PUT')
 
@@ -33,7 +33,18 @@
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
       </div>
-
+      <!-- Role -->
+      <div class="mt-4">
+        <label for="role" class="form-label">Select Role</label>
+        <select name="role" class="form-control">
+            @foreach ($roles as $role)
+            <option value="{{$role->id}}">{{ \App\RolesEnum::from($role->name)->label() }}</option>
+            @endforeach
+        </select>
+        @error('role')
+          <div class="mt-2 text-danger">{{ $message }}</div>
+        @enderror
+      </div>
       <!-- Password (optional) -->
       <div class="mt-4">
         <label for="password" class="form-label">Password</label>
@@ -55,7 +66,7 @@
       <!-- Submit and Cancel -->
       <div class="pt-4">
         <button type="submit" class="btn btn-primary me-4">Update</button>
-        <a href="{{ route('admins.index') }}" class="btn btn-secondary">Cancel</a>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>
       </div>
     </form>
   </div>
