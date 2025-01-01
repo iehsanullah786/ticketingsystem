@@ -3,9 +3,9 @@ namespace App;
 enum StatusesEnum: string
 {
  // case NAMEINAPP = 'name-in-database';
-    case IN_PROGRESS = 'In Progress';
-    case PAID= 'Paid';
-    case MAIL_S = 'Mail S';
+    case UN_ASSIGNED = 'Un Assigned';
+    case ASSIGNED= 'Assigned';
+    case AWAITINGCLIENTRESPONSE = 'Awaiting Client Response';
     case CLOSED = 'Closed';
 
 

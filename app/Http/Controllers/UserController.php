@@ -41,6 +41,8 @@ class UserController extends Controller
     {
 
         $user=User::create($request->validated());
+        $user->image="/img/users/default.png";
+        $user->save();
         $role=Role::find($request->role);
         $roleName=$role->name;
         $user->assignRole($roleName);

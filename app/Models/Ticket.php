@@ -39,4 +39,9 @@ class Ticket extends Model
         return $this->belongsTo(User::class,'customer_user_id');
     }
 
+    public function agents()
+    {
+        return $this->belongsToMany(User::class,'ticket_agent');
+    }
+
 }

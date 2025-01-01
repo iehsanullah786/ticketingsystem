@@ -33,19 +33,19 @@
               </td>
 
               <td>
-                {{ $ticket->priority}}
+                {{ $ticket->priority->name}}
               </td>
               <td>
-                {{ $ticket->Status}}
+                {{ $ticket->Status->name}}
               </td>
               <td>
                 {{ $ticket->updated_at}}
               </td>
               <td>
-              {{ $ticket->customer->first_name}}               {{ $ticket->customer->_name}}
+              {{ $ticket->customer->first_name}}               {{ $ticket->customer->last_name}}
               </td>
               <td>
-
+              {{ $ticket->agents->first()->first_name}}               {{ $ticket->agents->first()->last_name}}
               </td>
 
               <td>

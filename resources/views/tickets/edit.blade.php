@@ -3,8 +3,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card mb-6">
     <h5 class="card-header">Add Ticket Details</h5>
-    <form method="POST" action="{{ route('tickets.update', $id) }}" class="card-body">
-     @method('PUT')
+    <form  method="POST" action="{{ route('admin.ticket.update-details', parameters: $id) }}" class="card-body">
       @csrf
 
       <!-- Statuses -->
@@ -20,7 +19,7 @@
         @enderror
       </div>
 
-
+      @role('admin')
         <!-- Priority -->
         <div class="mt-4">
         <label for="priority" class="form-label">Select Priority</label>
@@ -47,6 +46,7 @@
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
         </div>
+        @endrole
 
 
 

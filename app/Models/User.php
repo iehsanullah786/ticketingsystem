@@ -71,4 +71,9 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class,'customer_user_id');
     }
 
+    public function assignedtickets()
+    {
+        return $this->belongsToMany(Ticket::class,'ticket_agent');
+    }
+
 }

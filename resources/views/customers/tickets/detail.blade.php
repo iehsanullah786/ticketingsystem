@@ -73,7 +73,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Status</h5>
-                          <p class="text-success text-nowrap mb-0"> 15.8%</p>
+                          <p class="text-success text-nowrap mb-0"> </p>
                         </div>
                         <!-- <div class="card-body">
                           <div id="profitLastMonth"></div>
@@ -91,7 +91,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Priority</h5>
-                          <p class="text-success text-nowrap mb-0"> 15.8%</p>
+                          <p class="text-success text-nowrap mb-0"> </p>
                         </div>
                         <!-- <div class="card-body">
                           <div id="expensesChart"></div>

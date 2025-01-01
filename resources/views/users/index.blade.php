@@ -5,7 +5,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">All Admin</h5>
       <a href="{{ route('users.create') }}" class="btn btn-primary">
-        <i class="ti ti-plus me-1"></i> Add New Site Admin
+        <i class="ti ti-plus me-1"></i> Add New User
       </a>
     </div>
     <div class="table-responsive text-nowrap">

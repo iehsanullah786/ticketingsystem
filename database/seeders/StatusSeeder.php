@@ -13,9 +13,9 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         $input = [
-            StatusesEnum::IN_PROGRESS,
-            StatusesEnum::PAID,
-            StatusesEnum::MAIL_S,
+            StatusesEnum::UN_ASSIGNED,
+            StatusesEnum::ASSIGNED,
+            StatusesEnum::AWAITINGCLIENTRESPONSE,
             StatusesEnum::CLOSED,
         ];
 

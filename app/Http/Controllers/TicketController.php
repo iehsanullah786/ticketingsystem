@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
@@ -17,7 +16,13 @@ class TicketController extends Controller
     public function index()
     {
         $authuser=Auth::User();
-        $tickets=Ticket::all();
+        if($authuser->role=='admin'){
+            $tickets=Ticket::all();
+        }
+        else{
+            $tickets=$authuser->assignedtickets();
+        }
+
         return view('tickets.index', compact( 'tickets'));
     }
 
@@ -39,16 +44,16 @@ class TicketController extends Controller
         return view('tickets.detail', compact( 'ticket'));
     }
 
-    public function edit($id)
+
+    public function editDetails($id)
     {
-        //getting agent role users
         $agents=User::Role('agent')->get();
         $priorities=Priority::all();
         $statuses=Status::all();
         return view('tickets.edit', compact('priorities', 'statuses', 'agents','id'));
     }
 
-    public function update(Request $request,  $id)
+    public function updateDetails(Request $request , $id)
     {
 
         $ticket=Ticket::find($id);
@@ -61,8 +66,12 @@ class TicketController extends Controller
         $priority=priority::find($request->priority);
         $ticket->priority()->associate($priority);
 
-        //assiging Status to ticket
-        // $ticket->agent()->attach($id, $request->agent);
+        $ticket->save();
+
+        // assiging Status to ticket
+        $ticket->agents()->attach($request->agent);
+
+        return view('tickets.detail', compact( 'ticket'));
     }
 
     public function destroy(Ticket $ticket)

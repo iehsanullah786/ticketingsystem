@@ -29,16 +29,16 @@
               </td>
 
               <td>
-                {{ $ticket->status}}
+                {{ $ticket->status->name}}
               </td>
               <td>
       <a href="{{ route('customer.ticket.show',$ticket->id) }}" class="btn btn-primary">
         </i>Details
       </a>
 
-      <a href="{{ route('customer.ticket.destroy',$ticket->id) }}" class="btn btn-danger">
+      <!-- <a href="{{ route('customer.ticket.destroy',$ticket->id) }}" class="btn btn-danger">
 </i>Delete
-      </a>
+      </a> -->
               </td>
             </tr>
           @empty

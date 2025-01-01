@@ -12,12 +12,19 @@
 
 
                           <h4 class="text-primary mb-1">{{$ticket->subject}}</h4>
-                          <p class="mb-2">Lorem ipsum dolor</p>
+                          <!-- <p class="mb-2">Lorem ipsum dolor</p>
                           <a href="{{ route('tickets.index')}}" class="btn btn-primary mr-2">
-                          Return to tickets list</a>
+                          Return to tickets list</a> -->
 
-                          <a href="{{ route('tickets.edit', $ticket->id)}}" class="btn btn-primary">
-                          Edit Details</a>
+                          <a href="{{ route('admin.ticket.edit-details', $ticket->id)}}" class="btn btn-primary">
+                          @role('admin')
+                            Update Details
+                            @endrole
+
+                          @role('agent')
+                            Update Status
+                            @endrole
+                        </a>
                         </div>
                       </div>
 
@@ -46,7 +53,7 @@
                               </div>
                               <div class="card-info">
                                 <h5 class="mb-0">Agent</h5>
-                                <small>Agent name</small>
+                                <small>{{$ticket->agents->first()->first_name}} {{$ticket->agents->first()->last_name}}</small>
                               </div>
                             </div>
                           </div>
@@ -75,7 +82,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Status</h5>
-                          <p class="text-success text-nowrap mb-0"> 15.8%</p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->status->name}}</p>
                         </div>
                         <!-- <div class="card-body">
                           <div id="profitLastMonth"></div>
@@ -93,7 +100,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Priority</h5>
-                          <p class="text-success text-nowrap mb-0"> 15.8%</p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->priority->name}}</p>
                         </div>
                         <!-- <div class="card-body">
                           <div id="expensesChart"></div>
