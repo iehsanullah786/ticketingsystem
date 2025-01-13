@@ -79,7 +79,7 @@
         @role('agent')
         <!-- Tickets -->
         <li class="menu-item {{ request()->is('agent/tickets*') ? ' active' : '' }}">
-          <a href="{{ route('tickets.index') }}" class="menu-link">
+          <a href="{{ route('agent.ticket.index') }}" class="menu-link">
             <i class="menu-icon tf-icons ti ti-ticket"></i>
             <div data-i18n="Tickets">Tickets</div>
           </a>

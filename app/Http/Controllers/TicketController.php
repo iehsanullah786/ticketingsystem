@@ -15,13 +15,14 @@ class TicketController extends Controller
 
     public function index()
     {
-        $authuser=Auth::User();
-        if($authuser->role=='admin'){
-            $tickets=Ticket::all();
-        }
-        else{
-            $tickets=$authuser->assignedtickets();
-        }
+        // $authuser=Auth::User();
+        // if($authuser->role=='admin'){
+        //     $tickets=Ticket::all();
+        // }
+        // else{
+        //     $tickets=$authuser->assignedtickets;
+        // }
+        $tickets=Ticket::all();
 
         return view('tickets.index', compact( 'tickets'));
     }

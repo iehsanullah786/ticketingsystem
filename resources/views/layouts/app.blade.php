@@ -117,7 +117,7 @@
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
-          <div class="content-wrapper">
+          <div class="content-wrapper id="app">
             <!-- Content -->
 
             @yield('content')

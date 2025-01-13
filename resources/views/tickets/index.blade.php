@@ -56,12 +56,13 @@
               <a href="{{route('tickets.edit', $ticket->id)}}">
                 <button class="btn btn-warning"><i class="ti ti-edit me-2"></i></button>
               </a>
-
+@role('admin')
               <form method="POST" action="{{ route('tickets.destroy', $ticket->id) }}"  onsubmit="return confirm('Are you sure you want to delete this ticket?');" style="display:inline;">
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger" type="submit"><i class="ti ti-trash me-2"></i></button>
                 </form>
+                @endrole
 
               </td>
 

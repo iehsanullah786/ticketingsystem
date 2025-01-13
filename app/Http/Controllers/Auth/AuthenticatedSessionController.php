@@ -11,17 +11,13 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
+
     public function create(): View
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
+
     public function store(LoginRequest $request): RedirectResponse
     {
 
@@ -38,12 +34,13 @@ class AuthenticatedSessionController extends Controller
         }
 
         elseif($user->hasRole('agent')) {
-            return redirect(route('tickets.index', absolute: false));
+            return redirect(route('agent.ticket.index', absolute: false));
         }
 
         else {
-            return redirect('/');
+            return redirect('/ss');
         }
+
     }
 
 

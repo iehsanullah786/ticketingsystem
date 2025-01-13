@@ -13,8 +13,17 @@
 
                           <h4 class="text-primary mb-1">{{$ticket->subject}}</h4>
                           <p class="mb-2">Lorem ipsum dolor</p>
-                          <a href="{{ route('customer.ticket.index')}}" class="btn btn-primary mr-2">
+                          <a href="{{ route('customer.ticket.index')}}" class="btn btn-primary mr-4">
                           Return to tickets list</a>
+
+                        @php
+                            $id=$ticket->agents->first()->id;
+                            $messengerColor='#ffffff';
+                            $dark_mode ='#ffffff';
+                        @endphp
+
+                          <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">
+                          Chat</a>
 
                         </div>
                       </div>
@@ -107,20 +116,5 @@
                   </div>
                 </div>
 
-                <!-- Revenue Report -->
-                <div class="col-xxl-8">
-                  <div class="card h-100">
-                    <div class="card-body p-0">
-                      <div class="row row-bordered g-0">
-                        <div class="col-md-8 position-relative p-6">
-                          <div class="card-header d-inline-block p-0 text-wrap position-absolute">
-                            <h5 class="m-0 card-title">Messages</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--/ Revenue Report -->
 @endsection
 

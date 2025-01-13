@@ -8,14 +8,15 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
+        channels: __DIR__.'/../routes/channels.php',
         health: '/up',
-    )
-    ->withMiddleware(function (Middleware $middleware) {
+    )->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'auth' => \App\Http\Middleware\AuthMiddleware::class,
+            // 'guest' => \App\Http\Middleware\GuestMiddleware::class,
             'useractive' => \App\Http\Middleware\UserActiveMiddleware::class,
             'agent' => \App\Http\Middleware\AgentMiddleware::class,
             'customer' => \App\Http\Middleware\CustomerMiddleware::class,

@@ -9,7 +9,10 @@
         "barryvdh/laravel-dompdf": "^3.0",
         "laravel/breeze": "^2.2",
         "laravel/framework": "^11.9",
+        "laravel/reverb": "^1.0",
         "laravel/tinker": "^2.9",
+        "munafio/chatify": "^1.6",
+        "opcodesio/log-viewer": "^3.12",
         "spatie/laravel-permission": "^6.9",
         "stancl/tenancy": "^3.8"
     },

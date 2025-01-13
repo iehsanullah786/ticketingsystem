@@ -1,14 +1,16 @@
 <?php
 use App\Http\Controllers\ProfileController;
+use App\Events\Chat;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CannedReplyController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\AgentTicketController;
 use App\Http\Controllers\CustomerTicketController;
-use App\Http\Controllers\TicketAssignmentController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
@@ -28,11 +30,6 @@ use Illuminate\Support\Facades\Route;
         Route::resource('roles', RoleController::class);
         Route::resource('tickets', TicketController::class);
 
-
-        Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-        Route::post('users/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
     });
 
         //Customer login
@@ -43,24 +40,27 @@ use Illuminate\Support\Facades\Route;
         Route::get('tickets/{id}', [CustomerTicketController::class, 'show'])->name('customer.ticket.show');
         Route::get('tickets/destroy/{id}', [CustomerTicketController::class, 'destroy'])->name('customer.ticket.destroy');
 
+    });
+
+        //Agent login
+        Route::prefix('agent')->middleware(['auth', 'useractive','agent'])->group(function () {
+        Route::get('tickets/edit-details/{id}', action: [AgentTicketController::class, 'editDetails'])->name('agent.ticket.edit-details');
+        Route::POST('tickets/update-details/{id}', action: [AgentTicketController::class, 'updateDetails'])->name('agent.ticket.update-details');
+        Route::POST('tickets/update-details/{id}', action: [AgentTicketController::class, 'updateDetails'])->name('agent.ticket.update-details');
+        Route::get('tickets', action: [AgentTicketController::class, 'index'])->name('agent.ticket.index');
+        Route::get('tickets/{id}', [AgentTicketController::class, 'show'])->name('agent.ticket.show');
+
+        });
+
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::post('users/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
-    });
-
-    //Agent login
-
-        Route::prefix('agent')->middleware(['auth', 'useractive','agent'])->group(function () {
-            Route::get('tickets/edit-details/{id}', action: [TicketController::class, 'editDetails'])->name('admin.ticket.edit-details');
-            Route::POST('tickets/update-details/{id}', action: [TicketController::class, 'updateDetails'])->name('admin.ticket.update-details');
-            Route::resource('tickets', TicketController::class);
-
-            Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-            Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-            Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-            Route::post('users/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
+        Route::get('/broadcast', function () {
+            broadcast(new Chat());
         });
 
-
-require __DIR__.'/auth.php';
+        Route::get('/chat/{user}', [ChatController::class, 'show'])->name('chat');
+        Route::get('/messages/{user}', [ChatController::class, 'getMessages']);
+        Route::post('/messages/{user}', [ChatController::class, 'sendMessage']);
+    require __DIR__.'/auth.php';

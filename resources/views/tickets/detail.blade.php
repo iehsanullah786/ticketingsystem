@@ -53,7 +53,7 @@
                               </div>
                               <div class="card-info">
                                 <h5 class="mb-0">Agent</h5>
-                                <small>{{$ticket->agents->first()->first_name}} {{$ticket->agents->first()->last_name}}</small>
+                                <small>{{$ticket->agents->name}}</small>
                               </div>
                             </div>
                           </div>
@@ -123,7 +123,7 @@
                       <div class="row row-bordered g-0">
                         <div class="col-md-8 position-relative p-6">
                           <div class="card-header d-inline-block p-0 text-wrap position-absolute">
-                            <h5 class="m-0 card-title">Messages</h5>
+                           @include('vendor.Chatify.pages.app.blade.php')
                           </div>
                         </div>
                       </div>
