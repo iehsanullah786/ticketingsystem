@@ -29,7 +29,7 @@
               </td>
 
               <td>
-                {{ $ticket->status->name}}
+                {{ $ticket->status->name ?? ''}}
               </td>
               <td>
       <a href="{{ route('customer.ticket.show',$ticket->id) }}" class="btn btn-primary">

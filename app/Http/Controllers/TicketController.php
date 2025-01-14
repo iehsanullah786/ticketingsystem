@@ -75,8 +75,10 @@ class TicketController extends Controller
         return view('tickets.detail', compact( 'ticket'));
     }
 
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
-        //
+        Ticket::destroy($id);
+        return redirect(route('tickets.index'));
+
     }
 }

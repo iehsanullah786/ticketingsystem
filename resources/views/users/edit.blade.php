@@ -7,23 +7,16 @@
       @csrf
       @method('PUT')
 
-      <!-- First Name -->
+      <!--Name -->
       <div class="mt-4">
-        <label for="first_name" class="form-label">First Name</label>
-        <input type="text" id="first_name" name="first_name" value="{{ old('first_name', $user->first_name) }}" class="form-control" required autofocus />
-        @error('first_name')
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" class="form-control" required autofocus />
+        @error('name')
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
       </div>
 
-      <!-- Last Name -->
-      <div class="mt-4">
-        <label for="last_name" class="form-label">Last Name</label>
-        <input type="text" id="last_name" name="last_name" value="{{ old('last_name', $user->last_name) }}" class="form-control" required />
-        @error('last_name')
-          <div class="mt-2 text-danger">{{ $message }}</div>
-        @enderror
-      </div>
+
 
       <!-- Email -->
       <div class="mt-4">

@@ -8,20 +8,13 @@
 
         <!-- Name -->
       <div class="mt-4">
-        <label for="name" class="form-label">First Name</label>
-        <input type="text" id="first_name" name="first_name" value="{{ old('first_name')}}" class="form-control" required autofocus autocomplete="first_name" />
-        @error('first_name')
+        <label for="name" class="form-label"> Name</label>
+        <input type="text" id="name" name="name" value="{{ old('name')}}" class="form-control" required autofocus autocomplete="name" />
+        @error('name')
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
       </div>
 
-      <div class="mt-4">
-        <label for="name" class="form-label"> Last Name</label>
-        <input type="text" id="last_name" name="last_name" value="{{ old('last_name')}}" class="form-control"  autofocus autocomplete="last_name" />
-        @error('last_name')
-          <div class="mt-2 text-danger">{{ $message }}</div>
-        @enderror
-      </div>
       <!-- Email -->
       <div class="mt-4">
         <label for="email" class="form-label">Email</label>

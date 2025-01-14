@@ -39,7 +39,7 @@
         <label for="agent" class="form-label">Select Agent</label>
         <select name="agent" class="form-control">
         @foreach ($agents as $agent)
-        <option value="{{$agent->id}}">{{ $agent->first_name }} {{ $agent->last_name }}</option>
+        <option value="{{$agent->id}}">{{ $agent->name }}</option>
         @endforeach
         </select>
         @error('agent')

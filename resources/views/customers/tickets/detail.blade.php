@@ -16,10 +16,13 @@
                           <a href="{{ route('customer.ticket.index')}}" class="btn btn-primary mr-4">
                           Return to tickets list</a>
 
+
                         @php
+
                             $id=$ticket->agents->first()->id;
                             $messengerColor='#ffffff';
                             $dark_mode ='#ffffff';
+
                         @endphp
 
                           <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">

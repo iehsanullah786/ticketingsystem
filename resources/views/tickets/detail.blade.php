@@ -39,7 +39,6 @@
                     <div class="card-header d-flex justify-content-between">
                       <h5 class="card-title mb-0">Summary</h5>
                       <small class="text-muted">Created at: <span class="text-warning">{{ $ticket->created_at}}</span></small>
-
                     </div>
                     <div class="card-body d-flex align-items-end">
                       <div class="w-100">
@@ -53,7 +52,7 @@
                               </div>
                               <div class="card-info">
                                 <h5 class="mb-0">Agent</h5>
-                                <small>{{$ticket->agents->name}}</small>
+                                <small>{{$ticket->agents->first()->name ?? ""}}</small>
                               </div>
                             </div>
                           </div>
@@ -82,7 +81,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Status</h5>
-                          <p class="text-success text-nowrap mb-0"> {{$ticket->status->name}}</p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->status->name ?? ''}}</p>
                         </div>
                         <!-- <div class="card-body">
                           <div id="profitLastMonth"></div>
@@ -100,7 +99,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Priority</h5>
-                          <p class="text-success text-nowrap mb-0"> {{$ticket->priority->name}}</p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->priority->name ?? ''}}</p>
                         </div>
                         <!-- <div class="card-body">
                           <div id="expensesChart"></div>
@@ -116,20 +115,6 @@
                   </div>
                 </div>
 
-                <!-- Revenue Report -->
-                <div class="col-xxl-8">
-                  <div class="card h-100">
-                    <div class="card-body p-0">
-                      <div class="row row-bordered g-0">
-                        <div class="col-md-8 position-relative p-6">
-                          <div class="card-header d-inline-block p-0 text-wrap position-absolute">
-                           @include('vendor.Chatify.pages.app.blade.php')
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--/ Revenue Report -->
+
 @endsection
 

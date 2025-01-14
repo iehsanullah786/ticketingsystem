@@ -25,7 +25,7 @@
             <tr>
               <td>
                 <i class="ti ti-building ti-md text-primary me-4"></i>
-                <span class="fw-medium">{{ $user->first_name.' '.$user->last_name }}</span>
+                <span class="fw-medium">{{ $user->name }}</span>
               </td>
               <td>
                 {{ $user->email }}

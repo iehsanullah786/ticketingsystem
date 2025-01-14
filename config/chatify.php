@@ -112,5 +112,11 @@ return [
         'enabled' => true,
         'public_path' => 'sounds/chatify',
         'new_message' => 'new-message-sound.mp3',
-    ]
+    ],
+    'broadcasting' => [
+    'driver' => 'pusher',
+],
+
 ];
+
+
