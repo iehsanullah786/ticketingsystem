@@ -23,34 +23,7 @@
         @enderror
       </div>
 
-      @role('admin')
-        <!-- Priority -->
-        <div class="mt-4">
-        <label for="priority" class="form-label">Select Priority</label>
-        <select name="priority" class="form-control">
-        @foreach ($priorities as $priority)
-        <option value="{{$priority->id}}">{{ \App\PrioritiesEnum::from($priority->name) }}</option>
-        @endforeach
-        </select>
-        @error('priority')
-          <div class="mt-2 text-danger">{{ $message }}</div>
-        @enderror
-        </div>
 
-
-        <!-- Agents -->
-        <div class="mt-4 mb-4">
-        <label for="agent" class="form-label">Select Agent</label>
-        <select name="agent" class="form-control">
-        @foreach ($agents as $agent)
-        <option value="{{$agent->id}}">{{ $agent->first_name }} {{ $agent->last_name }}</option>
-        @endforeach
-        </select>
-        @error('agent')
-          <div class="mt-2 text-danger">{{ $message }}</div>
-        @enderror
-        </div>
-        @endrole
 
 
 

@@ -62,17 +62,12 @@ class AgentTicketController extends Controller
         $ticket=Ticket::find($id);
 
         //assiging Status to ticket
+
         $status=Status::find($request->status);
+
         $ticket->status()->associate($status);
 
-        //assiging priority to ticket
-        $priority=priority::find($request->priority);
-        $ticket->priority()->associate($priority);
-
         $ticket->save();
-
-        // assiging Status to ticket
-        $ticket->agents()->attach($request->agent);
 
         return view('agents.tickets.detail', compact( 'ticket'));
     }

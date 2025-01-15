@@ -24,7 +24,7 @@
                           $dark_mode = '#ffffff';
                       @endphp
 
-                          <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">
+
                           <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">
                           Chat</a>
 
@@ -52,15 +52,7 @@
 
                           </div>
                           <div class="col-md-3 col-6">
-                            <!-- <div class="d-flex align-items-center">
-                              <div class="badge rounded bg-label-success me-4 p-2">
-                                <i class="ti ti-currency-dollar ti-lg"></i>
-                              </div>
-                              <div class="card-info">
-                                <h5 class="mb-0">$9745</h5>
-                                <small>Revenue</small>
-                              </div>
-                            </div> -->
+
                           </div>
                         </div>
                       </div>
@@ -76,15 +68,9 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Status</h5>
-                          <p class="text-success text-nowrap mb-0"> </p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->status->name}}</p>
                         </div>
-                        <!-- <div class="card-body">
-                          <div id="profitLastMonth"></div>
-                          <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
-                            <h4 class="mb-0">624k</h4>
-                            <small class="text-success">+8.24%</small>
-                          </div>
-                        </div> -->
+
                       </div>
                     </div>
                     <!--/ Profit last month -->
@@ -94,14 +80,9 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Priority</h5>
-                          <p class="text-success text-nowrap mb-0"> </p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->priority->name}}</p>
                         </div>
-                        <!-- <div class="card-body">
-                          <div id="expensesChart"></div>
-                          <div class="mt-3 text-center">
-                            <small class="text-muted mt-3">$21k Expenses more than last month</small>
-                          </div>
-                        </div> -->
+
                       </div>
                     </div>
                     <!--/ Expenses -->
@@ -118,16 +99,11 @@
                             </div>
                             <div class="card-info">
                               <h5 class="mb-0">Agent</h5>
-                              <small>Agent name</small>
+                              <small>{{$ticket->agents->first()->name}}</small>
                             </div>
                           </div>
                         </div>
-                        <!-- <div class="card-body">
-                          <div id="expensesChart"></div>
-                          <div class="mt-3 text-center">
-                            <small class="text-muted mt-3">$21k Expenses more than last month</small>
-                          </div>
-                        </div> -->
+
                       </div>
                     </div>
                     <!--/ Expenses -->
