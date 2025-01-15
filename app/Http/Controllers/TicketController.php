@@ -15,15 +15,7 @@ class TicketController extends Controller
 
     public function index()
     {
-        // $authuser=Auth::User();
-        // if($authuser->role=='admin'){
-        //     $tickets=Ticket::all();
-        // }
-        // else{
-        //     $tickets=$authuser->assignedtickets;
-        // }
         $tickets=Ticket::all();
-
         return view('tickets.index', compact( 'tickets'));
     }
 
@@ -55,8 +47,10 @@ class TicketController extends Controller
         //get old values
         $ticket=Ticket::find($id);
         $currentStatusId = $ticket->status_id;
+
+        //get old values
         $currentPriorityId = $ticket->priority_id;
-        $currentAgentId = $ticket->agents->first()->id;
+        $currentAgentId = $ticket->agents->first()->id ?? '';
         return view('tickets.edit', compact('priorities', 'statuses', 'agents','id', 'currentStatusId', 'currentPriorityId','currentAgentId'));
     }
 

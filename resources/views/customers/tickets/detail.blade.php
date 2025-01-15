@@ -17,14 +17,14 @@
                           Return to tickets list</a>
 
 
-                        @php
+                          @php
+                          $agent = $ticket->agents->first();
+                          $id = $agent ? $agent->id : null; // Set $id to null if no agent exists
+                          $messengerColor = '#ffffff';
+                          $dark_mode = '#ffffff';
+                      @endphp
 
-                            $id=$ticket->agents->first()->id;
-                            $messengerColor='#ffffff';
-                            $dark_mode ='#ffffff';
-
-                        @endphp
-
+                          <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">
                           <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">
                           Chat</a>
 
