@@ -6,7 +6,7 @@
         <!-- Login -->
 
 
-            <h4 class="mb-1">Welcome to Aethon Payroll! 👋</h4>
+            <h4 class="mb-1">Welcome to Ticketing Software! 👋</h4>
             <p class="mb-6">Please sign-in to your account</p>
             @if ($errors->any())
               <div class="alert alert-danger">
