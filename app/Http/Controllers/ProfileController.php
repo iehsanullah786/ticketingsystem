@@ -50,8 +50,7 @@ class ProfileController extends Controller
         }
 
         // Update other details
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
 

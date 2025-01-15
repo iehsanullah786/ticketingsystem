@@ -11,7 +11,11 @@
         <label for="status" class="form-label">Select Status</label>
         <select name="status" class="form-control">
             @foreach ($statuses as $status)
-            <option value="{{$status->id}}">{{ \App\StatusesEnum::from($status->name) }}</option>
+            <option
+                value="{{ $status->id }}"
+                {{ old('status', $currentStatusId) == $status->id ? 'selected' : '' }}>
+                {{ \App\StatusesEnum::from($status->name) }}
+            </option>
             @endforeach
         </select>
         @error('status')

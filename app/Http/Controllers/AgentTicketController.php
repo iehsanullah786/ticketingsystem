@@ -45,10 +45,15 @@ class AgentTicketController extends Controller
 
     public function editDetails($id)
     {
+
         $agents=User::Role('agent')->get();
         $priorities=Priority::all();
+
+        //get status
+        $ticket=Ticket::find($id);
+        $currentStatusId = $ticket->status_id;
         $statuses=Status::all();
-        return view('agents.tickets.edit', compact('priorities', 'statuses', 'agents','id'));
+        return view('agents.tickets.edit', compact('priorities', 'statuses', 'agents','id','currentStatusId'));
     }
 
     public function updateDetails(Request $request , $id)

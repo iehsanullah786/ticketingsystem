@@ -51,7 +51,13 @@ class TicketController extends Controller
         $agents=User::Role('agent')->get();
         $priorities=Priority::all();
         $statuses=Status::all();
-        return view('tickets.edit', compact('priorities', 'statuses', 'agents','id'));
+
+        //get old values
+        $ticket=Ticket::find($id);
+        $currentStatusId = $ticket->status_id;
+        $currentPriorityId = $ticket->priority_id;
+        $currentAgentId = $ticket->agents->first()->id;
+        return view('tickets.edit', compact('priorities', 'statuses', 'agents','id', 'currentStatusId', 'currentPriorityId','currentAgentId'));
     }
 
     public function updateDetails(Request $request , $id)
@@ -70,6 +76,7 @@ class TicketController extends Controller
         $ticket->save();
 
         // assiging Status to ticket
+        $ticket->agents()->detach();
         $ticket->agents()->attach($request->agent);
 
         return view('tickets.detail', compact( 'ticket'));

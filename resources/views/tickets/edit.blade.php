@@ -11,9 +11,14 @@
         <label for="status" class="form-label">Select Status</label>
         <select name="status" class="form-control">
             @foreach ($statuses as $status)
-            <option value="{{$status->id}}">{{ \App\StatusesEnum::from($status->name) }}</option>
+            <option
+                value="{{ $status->id }}"
+                {{ old('status', $currentStatusId) == $status->id ? 'selected' : '' }}>
+                {{ \App\StatusesEnum::from($status->name) }}
+            </option>
             @endforeach
         </select>
+
         @error('status')
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
@@ -24,10 +29,15 @@
         <div class="mt-4">
         <label for="priority" class="form-label">Select Priority</label>
         <select name="priority" class="form-control">
-        @foreach ($priorities as $priority)
-        <option value="{{$priority->id}}">{{ \App\PrioritiesEnum::from($priority->name) }}</option>
-        @endforeach
+            @foreach ($priorities as $priority)
+            <option
+                value="{{ $priority->id }}"
+                {{ old('priority', $currentPriorityId) == $priority->id ? 'selected' : '' }}>
+                {{ \App\PrioritiesEnum::from($priority->name) }}
+            </option>
+            @endforeach
         </select>
+
         @error('priority')
           <div class="mt-2 text-danger">{{ $message }}</div>
         @enderror
@@ -38,9 +48,13 @@
         <div class="mt-4 mb-4">
         <label for="agent" class="form-label">Select Agent</label>
         <select name="agent" class="form-control">
-        @foreach ($agents as $agent)
-        <option value="{{$agent->id}}">{{ $agent->name }}</option>
-        @endforeach
+            @foreach ($agents as $agent)
+            <option
+                value="{{ $agent->id }}"
+                {{ old('agent', $currentAgentId) == $agent->id ? 'selected' : '' }}>
+                {{ $agent->name }}
+            </option>
+            @endforeach
         </select>
         @error('agent')
           <div class="mt-2 text-danger">{{ $message }}</div>

@@ -6,11 +6,6 @@ use App\Models\Role;
 use App\UserStatus;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\RedirectResponse;
-use Hash;
 
 class UserController extends Controller
 {
@@ -18,7 +13,6 @@ class UserController extends Controller
     {
         // Get all users excluding the logged-in user
         $users = User::where('id', '!=', auth()->id())->get();
-
         return view('users.index', compact('users'));
     }
 
@@ -64,6 +58,8 @@ class UserController extends Controller
     {
         $roles=Role::all();
         $user=User::find($id);
+        $currentrole=$user->getRoleNames()->first();
+
 
         return view('users.edit', compact('user','roles'));
     }

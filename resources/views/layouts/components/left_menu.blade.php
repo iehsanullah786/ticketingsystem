@@ -1,8 +1,8 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo">
-    <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
-      <img src="{{ asset('img/avatars/logo.png') }}" style="width: 90px; height: auto;">
-    </a>
+
+      <img src="{{ asset('img/avatars/logo.png') }}" style="width: 50px; height: auto;">
+
   </div>
 
   <div class="menu-inner-shadow"></div>
@@ -42,12 +42,12 @@
         </li>
 
         <!-- Canned Replies -->
-        <li class="menu-item {{ request()->is('admin/canned-replies*') ? ' active' : '' }}">
+        {{-- <li class="menu-item {{ request()->is('admin/canned-replies*') ? ' active' : '' }}">
           <a href="{{ route('canned-replies.index') }}" class="menu-link">
             <i class="menu-icon tf-icons ti ti-message-circle"></i>
             <div data-i18n="Canned Replies">Canned Replies</div>
           </a>
-        </li>
+        </li> --}}
 
         <!-- Roles -->
         <li class="menu-item {{ request()->is('admin/roles*') ? ' active' : '' }}">

@@ -16,7 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'auth' => \App\Http\Middleware\AuthMiddleware::class,
-            // 'guest' => \App\Http\Middleware\GuestMiddleware::class,
+            'guest' => \App\Http\Middleware\GuestMiddleware::class,
             'useractive' => \App\Http\Middleware\UserActiveMiddleware::class,
             'agent' => \App\Http\Middleware\AgentMiddleware::class,
             'customer' => \App\Http\Middleware\CustomerMiddleware::class,
