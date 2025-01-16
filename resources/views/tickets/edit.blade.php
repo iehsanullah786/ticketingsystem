@@ -52,7 +52,7 @@
             <option
                 value="{{ $agent->id }}"
                 {{ old('agent', $currentAgentId) == $agent->id ? 'selected' : '' }}>
-                {{ $agent->name }}
+                {{ $agent->name ?? ""}}
             </option>
             @endforeach
         </select>
