@@ -14,7 +14,7 @@
             <option
                 value="{{ $status->id }}"
                 {{ old('status', $currentStatusId) == $status->id ? 'selected' : '' }}>
-                {{ \App\StatusesEnum::from($status->name) }}
+                {{ \App\StatusesEnum::from($status->name) ?? ""}}
             </option>
             @endforeach
         </select>
@@ -33,7 +33,7 @@
             <option
                 value="{{ $priority->id }}"
                 {{ old('priority', $currentPriorityId) == $priority->id ? 'selected' : '' }}>
-                {{ \App\PrioritiesEnum::from($priority->name) }}
+                {{ \App\PrioritiesEnum::from($priority->name) ?? ""}}
             </option>
             @endforeach
         </select>
