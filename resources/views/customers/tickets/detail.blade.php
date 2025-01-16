@@ -68,7 +68,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Status</h5>
-                          <p class="text-success text-nowrap mb-0"> {{$ticket->status->name}}</p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->status->name ?? ""}}</p>
                         </div>
 
                       </div>
