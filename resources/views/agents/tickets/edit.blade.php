@@ -14,7 +14,7 @@
             <option
                 value="{{ $status->id }}"
                 {{ old('status', $currentStatusId) == $status->id ? 'selected' : '' }}>
-                {{ \App\StatusesEnum::from($status->name) }}
+                {{ $status->name ?? "" }}
             </option>
             @endforeach
         </select>
