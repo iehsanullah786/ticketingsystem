@@ -80,7 +80,7 @@
                       <div class="card h-100">
                         <div class="card-header pb-7">
                           <h5 class="card-title mb-1">Priority</h5>
-                          <p class="text-success text-nowrap mb-0"> {{$ticket->priority->name}}</p>
+                          <p class="text-success text-nowrap mb-0"> {{$ticket->priority->name ?? ""}}</p>
                         </div>
 
                       </div>
@@ -99,7 +99,7 @@
                             </div>
                             <div class="card-info">
                               <h5 class="mb-0">Agent</h5>
-                              <small>{{$ticket->agents->first()->name}}</small>
+                              <small>{{$ticket->agents->first()->name ?? ""}}</small>
                             </div>
                           </div>
                         </div>
