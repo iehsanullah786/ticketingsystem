@@ -42,12 +42,12 @@
         </li>
 
         <!-- Canned Replies -->
-        {{-- <li class="menu-item {{ request()->is('admin/canned-replies*') ? ' active' : '' }}">
+        <li class="menu-item {{ request()->is('admin/canned-replies*') ? ' active' : '' }}">
           <a href="{{ route('canned-replies.index') }}" class="menu-link">
             <i class="menu-icon tf-icons ti ti-message-circle"></i>
             <div data-i18n="Canned Replies">Canned Replies</div>
           </a>
-        </li> --}}
+        </li>
 
         <!-- Roles -->
         <li class="menu-item {{ request()->is('admin/roles*') ? ' active' : '' }}">

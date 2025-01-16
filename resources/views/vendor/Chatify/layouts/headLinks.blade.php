@@ -15,6 +15,11 @@
 <script src="{{ asset('js/chatify/autosize.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle (with JavaScript) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
 {{-- styles --}}
 <link rel='stylesheet' href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
