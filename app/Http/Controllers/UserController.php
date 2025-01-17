@@ -59,8 +59,6 @@ class UserController extends Controller
         $roles=Role::all();
         $user=User::find($id);
         $currentrole=$user->getRoleNames()->first();
-
-
         return view('users.edit', compact('user','roles'));
     }
 

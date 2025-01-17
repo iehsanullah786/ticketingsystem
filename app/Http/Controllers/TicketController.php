@@ -13,11 +13,30 @@ use Illuminate\Support\Facades\Auth;
 class TicketController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $tickets=Ticket::all();
-        return view('tickets.index', compact( 'tickets'));
+        $statuses = Status::all();
+
+        // Start a query for tickets
+        $query = Ticket::query();
+
+        // Filter by status
+        if ($request->filled('status')) {
+            $query->where('status_id', $request->status);
+        }
+
+        // Search by subject
+        if ($request->filled('search')) {
+            $search = $request->get('search');
+            $query->where('subject', 'like', "%{$search}%");
+        }
+
+        // Execute the query
+        $tickets = $query->get();
+
+        return view('tickets.index', compact('tickets', 'statuses'));
     }
+
 
 
     public function create($id)
@@ -82,4 +101,20 @@ class TicketController extends Controller
         return redirect(route('tickets.index'));
 
     }
+
+
+
+    public function filterTickets(Request $request)
+    {
+        dd($request);
+        $status=Status::find($request);
+        $tickets=$status->tickets;
+        return redirect(route('tickets.index', compact('tickets')));
+
+    }
+
+
+
+
+
 }

@@ -9,8 +9,6 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Middleware\RoleMiddleware;
 
 use Illuminate\Support\Facades\Route;
 

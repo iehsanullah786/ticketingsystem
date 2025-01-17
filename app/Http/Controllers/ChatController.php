@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Message;
 use App\Events\MessageSent;
-use App\Http\Controllers\vendor\Chatify;
 class ChatController extends Controller
 {
     public function index(User $user)

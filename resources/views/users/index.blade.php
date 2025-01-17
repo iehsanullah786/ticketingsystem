@@ -79,11 +79,10 @@
     </div>
   </div>
 </div>
-
 @endsection
 
 @push('scripts')
- $(document).on('change', '.status-toggle', function () {
+$(document).on('change', '.status-toggle', function () {
       var userId = $(this).data('id');
       var newStatus = $(this).is(':checked') ? '{{ \App\UserStatus::ACTIVE->value }}' : '{{ \App\UserStatus::DEACTIVE->value }}';
       var checkbox = $(this);
@@ -109,6 +108,5 @@
               checkbox.prop('checked', !checkbox.is(':checked')); // Revert if AJAX fails
           }
       });
-  });
+});
 @endpush
-

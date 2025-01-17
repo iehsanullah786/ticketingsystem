@@ -47,7 +47,7 @@
                 <div class="col-xl-12 col-md-12">
                   <div class="card h-100 mt-5 mb-5">
                     <div class="card-header d-flex justify-content-between">
-                      <h5 class="card-title mb-0">Summary:</h5>
+                      <h5 class="card-title mb-0">Ticket details:</h5>
                       <small class="text-muted">Created at: <span class="text-warning">{{ $ticket->created_at}}</span></small>
 
                     </div>

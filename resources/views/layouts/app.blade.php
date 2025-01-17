@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="{{asset('vendor/fonts/flag-icons.css')}}" />
 
     <!-- Core CSS -->
-
     <link rel="stylesheet" href="{{asset('vendor/css/rtl/core.css')}}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{asset('vendor/css/rtl/theme-default.css')}}" class="template-customizer-theme-css" />
 

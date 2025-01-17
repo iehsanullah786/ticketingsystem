@@ -3,7 +3,6 @@
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row g-6">
-                <!-- View sales -->
                 <div class="col-xl-4 ">
                   <div class="card">
                     <div class="d-flex align-items-end row">
@@ -36,11 +35,11 @@
                 </div>
                 <!-- View sales -->
 
-                <!-- Statistics -->
+                <!-- Summary -->
                 <div class="col-xl-12 col-md-12">
                   <div class="card h-100">
                     <div class="card-header d-flex justify-content-between">
-                      <h5 class="card-title mb-0">Summary</h5>
+                      <h5 class="card-title mb-0">Ticket details:</h5>
                       <small class="text-muted">Created at: <span class="text-warning">{{ $ticket->created_at}}</span></small>
 
                     </div>
@@ -75,7 +74,7 @@
                     </div>
                     <!--/ Profit last month -->
 
-                    <!-- Expenses -->
+                    <!-- Priority -->
                     <div class="col-xl-4 col-sm-4">
                       <div class="card h-100">
                         <div class="card-header pb-7">
@@ -87,7 +86,7 @@
                     </div>
                     <!--/ Expenses -->
 
-                    <!-- Expenses -->
+                    <!-- Agent -->
                     <div class="col-xl-4 col-sm-4">
                       <div class="card h-100">
                         <div class="card-header pb-7">
@@ -106,9 +105,6 @@
 
                       </div>
                     </div>
-                    <!--/ Expenses -->
-
-
                   </div>
                 </div>
 

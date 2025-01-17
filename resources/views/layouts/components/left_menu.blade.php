@@ -9,13 +9,24 @@
 
   <ul class="menu-inner py-1">
         <!-- Dashboard -->
+
+
         @role('admin')
-        <li class="menu-item {{ request()->is('admin/dashboard*') ? ' active' : '' }}">
+
+        <!-- Tickets -->
+        <li class="menu-item {{ request()->is('admin/tickets*') ? ' active' : '' }}">
+            <a href="{{ route('tickets.index') }}" class="menu-link">
+              <i class="menu-icon tf-icons ti ti-ticket"></i>
+              <div data-i18n="Tickets">Tickets</div>
+            </a>
+          </li>
+
+        {{-- <li class="menu-item {{ request()->is('admin/dashboard*') ? ' active' : '' }}">
           <a href="{{ route('admin.dashboard') }}" class="menu-link">
             <i class="menu-icon tf-icons ti ti-dashboard"></i>
             <div data-i18n="Dashboard">Dashboard</div>
           </a>
-        </li>
+        </li> --}}
 
         <!-- Admins -->
         <li class="menu-item {{ request()->is('admin/users*') ? ' active' : '' }}">
@@ -26,20 +37,20 @@
         </li>
 
         <!-- Priorities -->
-        <li class="menu-item {{ request()->is('admin/priorities*') ? ' active' : '' }}">
+        {{-- <li class="menu-item {{ request()->is('admin/priorities*') ? ' active' : '' }}">
           <a href="{{ route('priorities.index') }}" class="menu-link">
             <i class="menu-icon tf-icons ti ti-alert-circle"></i>
             <div data-i18n="Priorities">Priorities</div>
           </a>
-        </li>
+        </li> --}}
 
         <!-- Statuses -->
-        <li class="menu-item {{ request()->is('admin/statuses*') ? ' active' : '' }}">
+        {{-- <li class="menu-item {{ request()->is('admin/statuses*') ? ' active' : '' }}">
           <a href="{{ route('statuses.index') }}" class="menu-link">
           <i class="menu-icon tf-icons ti ti-tag"></i>
             <div data-i18n="Statuses">Statuses</div>
           </a>
-        </li>
+        </li> --}}
 
         <!-- Canned Replies -->
         <li class="menu-item {{ request()->is('admin/canned-replies*') ? ' active' : '' }}">
@@ -49,21 +60,15 @@
           </a>
         </li>
 
-        <!-- Roles -->
+        {{-- <!-- Roles -->
         <li class="menu-item {{ request()->is('admin/roles*') ? ' active' : '' }}">
           <a href="{{ route('roles.index') }}" class="menu-link">
             <i class="menu-icon tf-icons ti ti-user-circle"></i>
             <div data-i18n="Roles">Roles</div>
           </a>
-        </li>
+        </li> --}}
 
-        <!-- Tickets -->
-        <li class="menu-item {{ request()->is('admin/tickets*') ? ' active' : '' }}">
-          <a href="{{ route('tickets.index') }}" class="menu-link">
-            <i class="menu-icon tf-icons ti ti-ticket"></i>
-            <div data-i18n="Tickets">Tickets</div>
-          </a>
-        </li>
+
         @endrole
 
         @role('customer')
