@@ -38,9 +38,8 @@
         </div>
         @endrole
 
-
         @role('customer')
-        {{-- Canned Replies Dropdown Section --}}
+
         <div class="canned-replies-section p-3">
             <h6 class="section-title fw-bold">
                 Any Notes
@@ -75,9 +74,10 @@
                     <a href="#" class="user-name">{{ config('chatify.name') }}</a>
                 </div>
                 {{-- header buttons --}}
+
                 <nav class="m-header-right">
 
-                    <a href="{{ url()->previous()}}">
+                    <a href="{{route('admin.logout')}}">
                         <i class="fas fa-home"></i>
                     </a>
                     <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>

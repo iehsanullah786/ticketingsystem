@@ -102,14 +102,55 @@ class TicketController extends Controller
 
     }
 
-
-
     public function filterTickets(Request $request)
     {
-        dd($request);
         $status=Status::find($request);
         $tickets=$status->tickets;
         return redirect(route('tickets.index', compact('tickets')));
+
+    }
+
+    public function adminChat($customerid , $agentid)
+    {
+
+        $agent = User::findOrFail($agentid); // Find the user to impersonate
+        session(['impersonator' => Auth::id()]); // Store the original user ID in session
+        Auth::login($agent); // Log in as the new user
+
+        return redirect()->to('chatify/' . $customerid);
+
+
+    }
+
+    public function adminLogout()
+    {
+
+        // Check if the user is impersonating another user
+        if (session()->has('impersonator') && Auth::check()) {
+            $originalUserId = session('impersonator');
+            $originalUser = User::find($originalUserId);
+
+            if ($originalUser) {
+                Auth::login($originalUser); // Revert back to the original user
+            }
+
+            session()->forget('impersonator'); // Clear the impersonator session
+            $user=Auth::User();
+            if ($user->hasRole('admin')) {
+                return redirect(route('tickets.index', absolute: false));
+            }
+
+            elseif ($user->hasRole('customer')) {
+                return redirect(route('customer.ticket.index', absolute: false));
+            }
+
+            elseif($user->hasRole('agent')) {
+                return redirect(route('agent.ticket.index', absolute: false));
+            }
+
+
+        }
+
 
     }
 

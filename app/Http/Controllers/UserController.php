@@ -102,6 +102,7 @@ class UserController extends Controller
     {
 
         $user = User::findOrFail($request->user_id);
+
         // Toggle status
         if ($user->status === UserStatus::ACTIVE) {
             $user->status = UserStatus::DEACTIVE;

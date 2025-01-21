@@ -9,21 +9,12 @@
                     <div class="d-flex align-items-end row">
                       <div class="col-7">
                         <div class="card-body text-nowrap">
-
-
                           <h4 class="text-primary mb-3">{{$ticket->subject}}</h4>
-
                           <a href="{{ route('agent.ticket.index')}}" class="btn btn-primary" style="margin-right: 10px;">
                           Return to tickets list</a>
 
                           <a href="{{ route('agent.ticket.edit-details', $ticket->id)}}" class="btn btn-primary" style="margin-right: 10px;">
-                          @role('admin')
-                            Update Details
-                            @endrole
-
-                          @role('agent')
                             Update Status
-                            @endrole
                         </a>
 
                          @php
@@ -59,15 +50,7 @@
 
                           </div>
                           <div class="col-md-3 col-6">
-                            <!-- <div class="d-flex align-items-center">
-                              <div class="badge rounded bg-label-success me-4 p-2">
-                                <i class="ti ti-currency-dollar ti-lg"></i>
-                              </div>
-                              <div class="card-info">
-                                <h5 class="mb-0">$9745</h5>
-                                <small>Revenue</small>
-                              </div>
-                            </div> -->
+
                           </div>
                         </div>
                       </div>
@@ -85,13 +68,7 @@
                           <h5 class="card-title mb-1">Status:</h5>
                           <p class="text-success text-nowrap mb-0"> {{$ticket->status->name ?? ''}}</p>
                         </div>
-                        <!-- <div class="card-body">
-                          <div id="profitLastMonth"></div>
-                          <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
-                            <h4 class="mb-0">624k</h4>
-                            <small class="text-success">+8.24%</small>
-                          </div>
-                        </div> -->
+
                       </div>
                     </div>
                     <!--/ Profit last month -->
@@ -103,12 +80,7 @@
                           <h5 class="card-title mb-1">Priority:</h5>
                           <p class="text-success text-nowrap mb-0"> {{$ticket->priority->name ?? ''}}</p>
                         </div>
-                        <!-- <div class="card-body">
-                          <div id="expensesChart"></div>
-                          <div class="mt-3 text-center">
-                            <small class="text-muted mt-3">$21k Expenses more than last month</small>
-                          </div>
-                        </div> -->
+
                       </div>
                     </div>
                     <!--/ Expenses -->
@@ -129,12 +101,7 @@
                             </div>
                           </div>
                         </div>
-                        <!-- <div class="card-body">
-                          <div id="expensesChart"></div>
-                          <div class="mt-3 text-center">
-                            <small class="text-muted mt-3">$21k Expenses more than last month</small>
-                          </div>
-                        </div> -->
+
                       </div>
                     </div>
                     <!--/ Expenses -->

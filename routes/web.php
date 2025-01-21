@@ -28,7 +28,6 @@ use Illuminate\Support\Facades\Route;
         Route::resource('roles', RoleController::class);
         Route::resource('tickets', TicketController::class);
 
-
     });
 
         //Customer login
@@ -55,7 +54,7 @@ use Illuminate\Support\Facades\Route;
         Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::post('users/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
-
-
+        Route::get('adminchat/{customerid}/{agentid}', action: [TicketController::class, 'adminChat'])->name('admin.chat');
+        Route::get('adminlogout', action: [TicketController::class, 'adminLogout'])->name('admin.logout');
 
     require __DIR__.'/auth.php';

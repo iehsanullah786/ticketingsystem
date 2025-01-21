@@ -82,7 +82,10 @@
 @endsection
 
 @push('scripts')
+
 $(document).on('change', '.status-toggle', function () {
+    console.log('test'); // Log the toggled state
+
       var userId = $(this).data('id');
       var newStatus = $(this).is(':checked') ? '{{ \App\UserStatus::ACTIVE->value }}' : '{{ \App\UserStatus::DEACTIVE->value }}';
       var checkbox = $(this);
@@ -94,6 +97,7 @@ $(document).on('change', '.status-toggle', function () {
               user_id: userId,
               status: newStatus
           },
+
           success: function(response) {
             console.info(response.message);
               if (response.success) {
