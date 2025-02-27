@@ -1,11 +1,11 @@
 @include('Chatify::layouts.headLinks')
 @php
     $cannedReplies = App\Models\CannedReply::all();
+    $ticket_id = Session::get('ticket_id');
 @endphp
 <div class="messenger">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
-
 
         <div class="m-body contacts-container">
 
@@ -31,17 +31,19 @@
                             </div>
                         </div>
                     </div>
-                @empty
+                    @empty
                     <p>No canned replies available.</p>
                 @endforelse
             </div>
         </div>
         @endrole
 
+
         @role('customer')
 
         <div class="canned-replies-section p-3">
             <h6 class="section-title fw-bold">
+                <b>Ticket Id: </b>{{$ticket_id}} <br>
                 Any Notes
             </h6>
 

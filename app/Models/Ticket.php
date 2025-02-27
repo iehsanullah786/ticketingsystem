@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Message;
+use App\Models\ChMessage;
 use App\Models\Priority;
 use App\Models\Status;
 use App\Models\User;
@@ -31,7 +31,7 @@ class Ticket extends Model
     //as a parent
     public function messages()
     {
-        return $this->hasMany(Message::class,'ticket_id');
+        return $this->hasMany(ChMessage::class,'ticket_id');
     }
 
     public function customer()

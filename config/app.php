@@ -55,6 +55,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
     'domain' => env('DOMAIN_URL', 'localhost'),
 
+'Chatify' => Chatify\Facades\ChatifyMessenger::class,
 
     /*
     |--------------------------------------------------------------------------

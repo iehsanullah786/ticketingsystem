@@ -18,12 +18,13 @@
                         </a>
 
                          @php
+                            Session::put('ticket_id', $ticket->id);
                             $id=$ticket->customer->id;
                             $messengerColor='#ffffff';
                             $dark_mode ='#ffffff';
                         @endphp
 
-                          <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">Chat</a>
+                          <a href="{{ url('chat/'.$id)}}" class="btn btn-primary mr-2">Chat</a>
 
                         </div>
                         </div>

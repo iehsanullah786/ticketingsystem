@@ -17,8 +17,7 @@ class AdminUserSeeder extends Seeder
     {
         $input = [
             'id'=>'1',
-            'first_name' => 'Super',
-            'last_name' => 'Admin',
+            'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => Hash::make('12345678'),
             'phone' => '7878454512',

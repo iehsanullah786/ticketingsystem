@@ -9,22 +9,23 @@
                       <div class="col-7">
                         <div class="card-body text-nowrap">
 
-
                           <h4 class="text-primary mb-3">{{$ticket->subject}}</h4>
 
                           <a href="{{ route('customer.ticket.index')}}" class="btn btn-primary mr-4" style="margin-right: 10px;">
                           Return to tickets list</a>
 
-
                           @php
+
+                          // Using the session facade
+                          Session::put('ticket_id', $ticket->id);
                           $agent = $ticket->agents->first();
                           $id = $agent ? $agent->id : null; // Set $id to null if no agent exists
                           $messengerColor = '#ffffff';
                           $dark_mode = '#ffffff';
+
                       @endphp
 
-
-                          <a href="{{ url('chatify/'.$id)}}" class="btn btn-primary mr-2">
+                          <a href="{{ url('chat/'.$id)}}" class="btn btn-primary mr-2">
                           Chat</a>
 
                         </div>
@@ -48,10 +49,8 @@
                         <div class="row gy-3">
                         <p>{{$ticket->summary}}</p>
                           <div class="col-md-3 col-6">
-
                           </div>
                           <div class="col-md-3 col-6">
-
                           </div>
                         </div>
                       </div>
